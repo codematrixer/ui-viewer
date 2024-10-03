@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "uiviewer"
+version = "1.0.0"
+description = "UI hierarchy visualization tool, supporting Android, iOS, HarmonyOS NEXT."
+authors = ["codematrixer <chenli_gogo@163.com>"]
+license = "MIT"
+readme = "README.md"
+include = ["*/assets/*"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+uvicorn = "^0.15.0"
+fastapi = "^0.68.0"
+aiofiles = "^23.1.0"
+uiautomator2 = "^3.0.0"
+facebook-wda = "^1.0.5"
+hmdriver2 = "^1.2.8"
+
+[tool.poetry.extras]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
