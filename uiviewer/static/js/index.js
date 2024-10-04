@@ -1,68 +1,77 @@
-import { API_HOST } from './config.js';
+import { saveToLocalStorage, getFromLocalStorage, copyToClipboard } from './utils.js';
+import { listDevices, connectDevice, fetchScreenshot, fetchHierarchy } from './api.js';
+
 
 new Vue({
   el: '#app',
   data() {
     return {
-      platform: localStorage.platform || 'harmony',
-      serial: localStorage.serial || '', 
+      platform: getFromLocalStorage('platform', 'harmony'),
+      serial: getFromLocalStorage('serial', ''),
       devices: [],
       isConnected: false,
       isConnecting: false,
       isDumping: false,
-
-      bundleName: localStorage.bundleName || "",
-      abilityName: localStorage.abilityName || "",
-      displaySize: localStorage.displaySize || [0, 0],
+      packageName: getFromLocalStorage('packageName', ''),
+      activityName: getFromLocalStorage('activityName', ''),
+      displaySize: getFromLocalStorage('displaySize', [0, 0]),
       jsonHierarchy: {},
-    
       mouseClickCoordinatesPercent: null,
-
       hoveredNode: null,
       selectedNode: null,
       selectedNodeDetails: null,
       treeData: [],
       defaultProps: {
         children: 'children',
-        label: 'type'
+        label: '_type'
       },
-      currentNodeId: "0",  //useless
-      nodeFilterText: "",
-
+      nodeFilterText: '',
       centerWidth: 500,
-      isDividerHovered: false, // 用于跟踪拖动条是否被悬停
-      isDragging: false // 用于跟踪是否正在拖动
+      isDividerHovered: false,
+      isDragging: false
     };
   },
   computed: {
     selectedNodeDetailsArray() {
-      const defaultDetails = [
-        { key: 'bundleName', value: this.bundleName },
-        { key: 'abilityName', value: this.abilityName },
+      const isHarmony = this.platform === 'harmony';
+      const defaultDetails = isHarmony ? [
+        { key: 'bundleName', value: this.packageName },
+        { key: 'abilityName', value: this.activityName },
+        { key: 'displaySize', value: this.displaySize },
+        { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
+      ] : [
+        { key: 'packageName', value: this.packageName },
+        { key: 'activityName', value: this.activityName },
         { key: 'displaySize', value: this.displaySize },
         { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
       ];
-  
+
       if (!this.selectedNodeDetails) {
         return defaultDetails;
       }
-  
+
       const nodeDetails = Object.keys(this.selectedNodeDetails)
-        .filter(key => key !== 'children') // 过滤掉 children 字段
-        .map(key => ({
-          key,
-          value: this.selectedNodeDetails[key]
-        }));
-  
+        .filter(key => key !== 'children' && key !== '_id')
+        .map(key => {
+          let newKey = key;
+          if (key === '_type') {
+            newKey = isHarmony ? 'type' : 'class';
+          }
+          return {
+            key: newKey,
+            value: this.selectedNodeDetails[key]
+          };
+        });
+
       return [...defaultDetails, ...nodeDetails];
     }
   },
   watch: {
-    platform: function (newval) {
-      localStorage.setItem('platform', newval);
+    platform(newVal) {
+      saveToLocalStorage('platform', newVal);
     },
-    serial: function (newval) {
-      localStorage.setItem('serial', newval);
+    serial(newVal) {
+      saveToLocalStorage('serial', newVal);
     },
     nodeFilterText(val) {
       this.$refs.treeRef.filter(val);
@@ -77,117 +86,97 @@ new Vue({
   },
   methods: {
     initPlatform() {
-      this.serial = ''
+        this.serial = ''
+        this.isConnected = false;
     },
-    listDevice: function () {
-      $.ajax({
-        method: "get",
-        url: API_HOST + this.platform + "/serials"
-      }).then(ret => {  
-        this.devices = ret.data
-      })
+    async listDevice() {
+      try {
+        const response = await listDevices(this.platform);
+        this.devices = response.data;
+      } catch (error) {
+        console.error(error);
+      }
     },
-
     async connectDevice() {
       this.isConnecting = true;
       try {
-        const platform = this.platform;
-        const serial = this.serial;
+        if (!this.serial) {
+          throw new Error('Please select device first');
+        }
 
-        const response = await $.ajax({
-          method: "post",
-          url: API_HOST + platform + "/" + serial + "/init"
-        });
-
+        const response = await connectDevice(this.platform, this.serial);
         if (response.success) {
           this.isConnected = true;
           await this.dumpHierarchyWithScreen();
         } else {
-          console.log(response.message)
           throw new Error(response.message);
         }
       } catch (err) {
-        this.$message({showClose: true, message: `Error: ${err.message}`, type: 'error'});
+        this.$message({ showClose: true, message: `Error: ${err.message}`, type: 'error' });
       } finally {
         this.isConnecting = false;
       }
     },
-    
     async dumpHierarchyWithScreen() {
       this.isDumping = true;
       try {
         await this.fetchScreenshot();
         await this.fetchHierarchy();
       } catch (err) {
-        this.$message({showClose: true, message: `Error: ${err.message}`, type: 'error'});
+        this.$message({ showClose: true, message: `Error: ${err.message}`, type: 'error' });
       } finally {
         this.isDumping = false;
       }
     },
-
     async fetchScreenshot() {
-      const platform = this.platform;
-      const serial = this.serial;
-
-      const response = await $.ajax({
-        method: "get",
-        url: API_HOST + platform + "/" + serial + "/screenshot"
-      });
-
-      if (response.success) {
-        const base64Data = response.data;
-        this.renderScreenshot(base64Data);
-        localStorage.setItem('cachedScreenshot', base64Data);
-      } else {
-        throw new Error(response.message);
+      try {
+        const response = await fetchScreenshot(this.platform, this.serial);
+        if (response.success) {
+          const base64Data = response.data;
+          this.renderScreenshot(base64Data);
+          saveToLocalStorage('cachedScreenshot', base64Data);
+        } else {
+          throw new Error(response.message);
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
-
     async fetchHierarchy() {
-      const platform = this.platform;
-      const serial = this.serial;
+      try {
+        const response = await fetchHierarchy(this.platform, this.serial);
+        if (response.success) {
+          const ret = response.data;
+          this.packageName = ret.packageName;
+          this.activityName = ret.activityName;
+          this.displaySize = ret.windowSize;
+          this.jsonHierarchy = ret.jsonHierarchy;
+          this.treeData = [ret.jsonHierarchy];
 
-      const response = await $.ajax({
-        method: "get",
-        url: API_HOST + platform + "/" + serial + "/hierarchy"
-      });
+          saveToLocalStorage('packageName', ret.packageName);
+          saveToLocalStorage('activityName', ret.activityName);
+          saveToLocalStorage('displaySize', ret.windowSize);
 
-      if (response.success) {
-        const ret = response.data
-        this.bundleName = ret.bundleName
-        this.abilityName = ret.abilityName
-        this.displaySize = ret.windowSize
-        this.jsonHierarchy = ret.jsonHierarchy;
-        this.treeData = [ret.jsonHierarchy];
+          this.hoveredNode = null;
+          this.selectedNode = null;
+          this.selectedNodeDetails = null;
 
-        localStorage.setItem("bundleName", ret.bundleName);   
-        localStorage.setItem("abilityName", ret.abilityName);
-        localStorage.setItem("displaySize", ret.windowSize);
-
-        this.hoveredNode = null; // 重置 hoveredNode
-        this.selectedNode = null; // 重置 selectedNode
-        this.selectedNodeDetails = null;
-    
-        this.renderHierarchy();
-  
-      } else {
-        throw new Error(response.message);
+          this.renderHierarchy();
+        } else {
+          throw new Error(response.message);
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
-
     renderHierarchy() {
       const canvas = this.$el.querySelector('#hierarchyCanvas');
       const ctx = canvas.getContext('2d');
-      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-      // 获取缩放比例和位移
+
       const { scale, offsetX, offsetY } = this.screenshotTransform;
-  
-      // 设置虚线样式
-      ctx.setLineDash([2, 6]); // 5px 实线，3px 空白
-  
-      // 递归绘制控件树
+      ctx.setLineDash([2, 6]);
+
       const drawNode = (node) => {
         if (node.rect) {
           const { x, y, width, height } = node.rect;
@@ -199,10 +188,9 @@ new Vue({
           node.children.forEach(drawNode);
         }
       };
-  
+
       drawNode(this.jsonHierarchy);
-  
-      // 绘制悬停节点的透明矩形区域
+
       if (this.hoveredNode) {
         const { x, y, width, height } = this.hoveredNode.rect;
         ctx.setLineDash([]);
@@ -211,8 +199,7 @@ new Vue({
         ctx.fillRect(x * scale + offsetX, y * scale + offsetY, width * scale, height * scale);
         ctx.globalAlpha = 1.0;
       }
-  
-      // 绘制选中节点的实线矩形框
+
       if (this.selectedNode) {
         const { x, y, width, height } = this.selectedNode.rect;
         ctx.setLineDash([]);
@@ -221,9 +208,8 @@ new Vue({
         ctx.strokeRect(x * scale + offsetX, y * scale + offsetY, width * scale, height * scale);
       }
     },
-  
     loadCachedScreenshot() {
-      const cachedScreenshot = localStorage.getItem('cachedScreenshot');
+      const cachedScreenshot = getFromLocalStorage('cachedScreenshot', null);
       if (cachedScreenshot) {
         this.renderScreenshot(cachedScreenshot);
       }
@@ -234,33 +220,29 @@ new Vue({
       img.onload = () => {
         const canvas = this.$el.querySelector('#screenshotCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         const { clientWidth: canvasWidth, clientHeight: canvasHeight } = canvas;
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-        
+
         const { width: imgWidth, height: imgHeight } = img;
         const scale = Math.min(canvasWidth / imgWidth, canvasHeight / imgHeight);
         const x = (canvasWidth - imgWidth * scale) / 2;
         const y = (canvasHeight - imgHeight * scale) / 2;
-        
-        // 保存缩放比例和位移
+
         this.screenshotTransform = { scale, offsetX: x, offsetY: y };
-  
-        // 清除画布并绘制图像
+
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.drawImage(img, x, y, imgWidth * scale, imgHeight * scale);
-  
-        // 调整 hierarchyCanvas 的尺寸和位置
+
         const hierarchyCanvas = this.$el.querySelector('#hierarchyCanvas');
         hierarchyCanvas.width = canvasWidth;
         hierarchyCanvas.height = canvasHeight;
       };
     },
-
     findSmallestNode(node, mouseX, mouseY, scale, offsetX, offsetY) {
       let smallestNode = null;
-  
+
       const checkNode = (node) => {
         if (node.rect) {
           const { x, y, width, height } = node.rect;
@@ -268,7 +250,7 @@ new Vue({
           const scaledY = y * scale + offsetY;
           const scaledWidth = width * scale;
           const scaledHeight = height * scale;
-  
+
           if (mouseX >= scaledX && mouseY >= scaledY && mouseX <= scaledX + scaledWidth && mouseY <= scaledY + scaledHeight) {
             if (!smallestNode || (width * height < smallestNode.rect.width * smallestNode.rect.height)) {
               smallestNode = node;
@@ -279,32 +261,29 @@ new Vue({
           node.children.forEach(checkNode);
         }
       };
-  
+
       checkNode(node);
       return smallestNode;
     },
-
     onMouseMove(event) {
       const canvas = this.$el.querySelector('#hierarchyCanvas');
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
-  
+
       const { scale, offsetX, offsetY } = this.screenshotTransform;
-  
+
       const hoveredNode = this.findSmallestNode(this.jsonHierarchy, mouseX, mouseY, scale, offsetX, offsetY);
       if (hoveredNode !== this.hoveredNode) {
         this.hoveredNode = hoveredNode;
         this.renderHierarchy();
       }
     },
-  
     onMouseClick(event) {
       const canvas = this.$el.querySelector('#hierarchyCanvas');
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
-
 
       const { scale, offsetX, offsetY } = this.screenshotTransform;
 
@@ -316,72 +295,37 @@ new Vue({
       const selectedNode = this.findSmallestNode(this.jsonHierarchy, mouseX, mouseY, scale, offsetX, offsetY);
       if (selectedNode !== this.selectedNode) {
         this.selectedNode = selectedNode;
-        this.selectedNodeDetails = selectedNode ? selectedNode : null; // 更新 selectedNodeDetails
-
+        this.selectedNodeDetails = selectedNode ? selectedNode : null;
         this.renderHierarchy();
-  
-        this.selectTreeNode(selectedNode._id); // FIXME
-      }else{
-        // 即使是同一个节点，也需要更新表格以显示新的坐标，触发重新渲染
+      } else {
         this.selectedNodeDetails = { ...this.selectedNodeDetails };
       }
-      
     },
-
     onMouseLeave() {
       if (this.hoveredNode) {
         this.hoveredNode = null;
         this.renderHierarchy();
       }
     },
-
     handleTreeNodeClick(node) {
       this.selectedNode = node;
       this.selectedNodeDetails = node;
       this.renderHierarchy();
     },
-
-    selectTreeNode(nodeId) {
-      this.currentNodeId = nodeId;
-      this.$nextTick().then(() => {
-        this.$refs.treeRef.setCurrentKey(this.currentNodeId);
-      });
-    },
-
     filterNode(value, data) {
       if (!value) return true;
-      if (!data || !data.type) return false; // 添加检查
-      return data.type.indexOf(value) !== -1;   // TODO 兼容andorid/ios
+      if (!data || !data._type) return false;
+      return data._type.indexOf(value) !== -1;
     },
-
     copyToClipboard(value) {
-      if (typeof value === 'object') {
-        value = JSON.stringify(value, null, 2);
-      }
-
-      if (value === null || value === undefined || value === '') {
-        value = '';
-      }
-
-      const textarea = document.createElement('textarea');
-      textarea.value = value;
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand('copy');
-        this.$message({showClose: true, message: "复制成功", type: 'success'});
-      } catch (err) {
-        this.$message({showClose: true, message: "复制失败", type: 'error'});
-      }
-      document.body.removeChild(textarea);
+      const success = copyToClipboard(value);
+      this.$message({ showClose: true, message: success ? "复制成功" : "复制失败", type: success ? 'success' : 'error' });
     },
-
     startDrag(event) {
       this.isDragging = true;
       document.addEventListener('mousemove', this.onDrag);
       document.addEventListener('mouseup', this.stopDrag);
     },
-
     onDrag(event) {
       this.centerWidth = event.clientX - this.$el.querySelector('.left').offsetWidth;
     },
@@ -396,5 +340,5 @@ new Vue({
     leaveDivider() {
       this.isDividerHovered = false;
     }
-  }
+ }
 });

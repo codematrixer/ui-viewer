@@ -27,17 +27,8 @@ class ApiResponse(BaseModel):
 
 
 class BaseHierarchy(BaseModel):
-    xmlHierarchy: Optional[str] = None
     jsonHierarchy: Optional[Dict] = None
     windowSize: Tuple[int, int]
     scale: int = 1
-
-
-class Hierarchy(BaseHierarchy):
     activityName: Optional[str] = None
     packageName: Optional[str] = None
-
-
-class HarmonyHierarchy(BaseHierarchy):
-    abilityName: Optional[str] = None
-    bundleName: Optional[str] = None

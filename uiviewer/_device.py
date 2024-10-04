@@ -4,16 +4,15 @@ import abc
 import tempfile
 from typing import List, Dict, Union
 
+from PIL import Image
 import adbutils
 import uiautomator2 as u2
-from PIL import Image
 from hmdriver2 import hdc
 from fastapi import HTTPException
 
-
-from utils.models import Platform, Hierarchy, HarmonyHierarchy
-from utils.common import file_to_base64, image_to_base64
-from utils import uidumplib
+from uiviewer._utils import file_to_base64, image_to_base64
+from uiviewer._models import Platform, BaseHierarchy
+from uiviewer.parser import android_hierarchy, ios_hierarchy, harmony_hierarchy
 
 
 def list_serials(platform: str) -> List[str]:
@@ -50,9 +49,9 @@ class HarmonyDevice(DeviceMeta):
             self.client.screenshot(path)
             return file_to_base64(path)
 
-    def dump_hierarchy(self) -> HarmonyHierarchy:
+    def dump_hierarchy(self) -> BaseHierarchy:
         raw = self.client.dump_hierarchy()
-        return uidumplib.convert_harmony_hierarchy(raw)
+        return harmony_hierarchy.convert_harmony_hierarchy(raw)
 
 
 class AndroidDevice(DeviceMeta):
@@ -64,12 +63,11 @@ class AndroidDevice(DeviceMeta):
         img: Image.Image = self.d.screenshot()
         return image_to_base64(img)
 
-    def dump_hierarchy(self) -> Hierarchy:
+    def dump_hierarchy(self) -> BaseHierarchy:
         current = self.d.app_current()
         page_xml = self.d.dump_hierarchy()
-        page_json = uidumplib.android_hierarchy_to_json(page_xml.encode('utf-8'))
-        return Hierarchy(
-            xmlHierarchy=page_xml,
+        page_json = android_hierarchy.get_android_hierarchy(page_xml)
+        return BaseHierarchy(
             jsonHierarchy=page_json,
             activity=current['activity'],
             packageName=current['package'],
