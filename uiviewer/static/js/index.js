@@ -12,6 +12,8 @@ new Vue({
       isConnected: false,
       isConnecting: false,
       isDumping: false,
+      wdaUrl: "",
+
       packageName: getFromLocalStorage('packageName', ''),
       activityName: getFromLocalStorage('activityName', ''),
       displaySize: getFromLocalStorage('displaySize', [0, 0]),
@@ -19,7 +21,6 @@ new Vue({
       mouseClickCoordinatesPercent: null,
       hoveredNode: null,
       selectedNode: null,
-      selectedNodeDetails: null,
       treeData: [],
       defaultProps: {
         children: 'children',
@@ -32,25 +33,15 @@ new Vue({
     };
   },
   computed: {
-    selectedNodeDetailsArray() {
+    selectedNodeDetails() {
       const isHarmony = this.platform === 'harmony';
-      const defaultDetails = isHarmony ? [
-        { key: 'bundleName', value: this.packageName },
-        { key: 'abilityName', value: this.activityName },
-        { key: 'displaySize', value: this.displaySize },
-        { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
-      ] : [
-        { key: 'packageName', value: this.packageName },
-        { key: 'activityName', value: this.activityName },
-        { key: 'displaySize', value: this.displaySize },
-        { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
-      ];
+      const defaultDetails = this.getDefaultNodeDetails(this.platform);
 
-      if (!this.selectedNodeDetails) {
+      if (!this.selectedNode) {
         return defaultDetails;
       }
 
-      const nodeDetails = Object.keys(this.selectedNodeDetails)
+      const nodeDetails = Object.keys(this.selectedNode)
         .filter(key => key !== 'children' && key !== '_id')
         .map(key => {
           let newKey = key;
@@ -59,7 +50,7 @@ new Vue({
           }
           return {
             key: newKey,
-            value: this.selectedNodeDetails[key]
+            value: this.selectedNode[key]
           };
         });
 
@@ -104,7 +95,7 @@ new Vue({
           throw new Error('Please select device first');
         }
 
-        const response = await connectDevice(this.platform, this.serial);
+        const response = await connectDevice(this.platform, this.serial, this.wdaUrl);
         if (response.success) {
           this.isConnected = true;
           await this.dumpHierarchyWithScreen();
@@ -159,7 +150,6 @@ new Vue({
 
           this.hoveredNode = null;
           this.selectedNode = null;
-          this.selectedNodeDetails = null;
 
           this.renderHierarchy();
         } else {
@@ -265,6 +255,34 @@ new Vue({
       checkNode(node);
       return smallestNode;
     },
+    getDefaultNodeDetails(platform) {
+      const commonDetails = [
+        { key: 'displaySize', value: this.displaySize },
+        { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
+      ];
+    
+      switch (platform) {
+        case 'ios':
+          return [
+            { key: 'bundleId', value: this.packageName },
+            ...commonDetails
+          ];
+        case 'android':
+          return [
+            { key: 'packageName', value: this.packageName },
+            { key: 'activityName', value: this.activityName },
+            ...commonDetails
+          ];
+        case 'harmony':
+          return [
+            { key: 'packageName', value: this.packageName },
+            { key: 'pageName', value: this.activityName },
+            ...commonDetails
+          ];
+        default:
+          return commonDetails;
+      }
+    },
     onMouseMove(event) {
       const canvas = this.$el.querySelector('#hierarchyCanvas');
       const rect = canvas.getBoundingClientRect();
@@ -294,11 +312,13 @@ new Vue({
 
       const selectedNode = this.findSmallestNode(this.jsonHierarchy, mouseX, mouseY, scale, offsetX, offsetY);
       if (selectedNode !== this.selectedNode) {
-        this.selectedNode = selectedNode;
-        this.selectedNodeDetails = selectedNode ? selectedNode : null;
+        this.selectedNode = selectedNode ? selectedNode : null;
+
         this.renderHierarchy();
+
       } else {
-        this.selectedNodeDetails = { ...this.selectedNodeDetails };
+        // 保证每次点击重新计算`selectedNodeDetails`，更新点击坐标
+        this.selectedNode = { ...this.selectedNode };
       }
     },
     onMouseLeave() {
@@ -309,7 +329,6 @@ new Vue({
     },
     handleTreeNodeClick(node) {
       this.selectedNode = node;
-      this.selectedNodeDetails = node;
       this.renderHierarchy();
     },
     filterNode(value, data) {

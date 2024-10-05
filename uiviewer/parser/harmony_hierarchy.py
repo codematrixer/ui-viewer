@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import uuid
-from uiviewer._models import BaseHierarchy
+from typing import Dict
 
 
-def convert_harmony_hierarchy(data: dict) -> BaseHierarchy:
-    ret = {
-        "jsonHierarchy": {
-            "_id": "3e7bbe34-c6ed-4a06-abef-f44c3b852467",
-            "children": []
-        },
-        "abilityName": "",
-        "bundleName": "",
-        "windowSize": [0, 0],
-        "scale": 1
-    }
+def convert_harmony_hierarchy(data: Dict) -> Dict:
+    ret = {"_id": str(uuid.uuid4()), "children": []}
 
     def __recursive_convert(node_a):
         node_b = {
@@ -60,8 +51,6 @@ def convert_harmony_hierarchy(data: dict) -> BaseHierarchy:
         node_b["rect"]["width"] = int(bounds[1].split(",")[0]) - int(bounds[0].split(",")[0])
         node_b["rect"]["height"] = int(bounds[1].split(",")[1]) - int(bounds[0].split(",")[1])
 
-        # TODO Remove unnecessary attributes
-
         children = node_a.get("children", [])
         if children:
             node_b["children"] = [__recursive_convert(child) for child in children]
@@ -69,23 +58,6 @@ def convert_harmony_hierarchy(data: dict) -> BaseHierarchy:
         return node_b
 
     # Recursively convert children of a to match b's structure
-    ret["jsonHierarchy"]["children"] = [__recursive_convert(child) for child in data.get("children", [])]
+    ret["children"] = [__recursive_convert(child) for child in data.get("children", [])]
 
-    # Set windowSize based on the bounds of the first attributes in a
-    first_bounds = data["attributes"].get("bounds", "")
-    if first_bounds:
-        first_bounds = first_bounds.strip("[]").split("][")
-        ret["windowSize"] = [
-            int(first_bounds[1].split(",")[0]) - int(first_bounds[0].split(",")[0]),
-            int(first_bounds[1].split(",")[1]) - int(first_bounds[0].split(",")[1])
-        ]
-
-    # Set abilityName based on the abilityName of the first attributes in the first children of a
-    first_child_attributes = data.get("children", [{}])[0].get("attributes", {})
-    ret["activityName"] = first_child_attributes.get("abilityName", "")
-
-    # Set bundleName based on the bundleName of the first attributes in the first children of a
-    first_child_attributes = data.get("children", [{}])[0].get("attributes", {})
-    ret["packageName"] = first_child_attributes.get("bundleName", "")
-
-    return BaseHierarchy(**ret)
+    return ret

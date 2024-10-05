@@ -5,8 +5,8 @@ export async function listDevices(platform) {
   return response.json();
 }
 
-export async function connectDevice(platform, serial) {
-  const response = await fetch(`${API_HOST}${platform}/${serial}/init`, {
+export async function connectDevice(platform, serial, wdaUrl) {
+  const response = await fetch(`${API_HOST}${platform}/${serial}/init?wdaUrl=${wdaUrl}`, {
     method: 'POST'
   });
   return response.json();

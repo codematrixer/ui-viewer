@@ -3,15 +3,21 @@
 import os
 import webbrowser
 import uvicorn
+from typing import Union,Optional
 
-from fastapi import FastAPI
-from fastapi import Request
-from fastapi import HTTPException
+from fastapi import FastAPI, Request, Query, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, RedirectResponse
 
+from uiviewer._device import (
+    list_serials,
+    init_device,
+    cached_devices,
+    AndroidDevice,
+    IosDevice,
+    HarmonyDevice
+)
 from uiviewer._models import ApiResponse
-from uiviewer._device import list_serials, init_device, cached_devices
 
 
 app = FastAPI()
@@ -60,21 +66,21 @@ async def get_serials(platform: str):
 
 
 @app.post("/{platform}/{serial}/init", response_model=ApiResponse)
-async def init(platform: str, serial: str):
-    device = init_device(platform, serial)
+async def init(platform: str, serial: str, wdaUrl: Optional[str] = Query(None)):
+    device = init_device(platform, serial, wdaUrl)
     return ApiResponse.doSuccess(device)
 
 
 @app.get("/{platform}/{serial}/screenshot", response_model=ApiResponse)
 async def screenshot(platform: str, serial: str):
-    device = cached_devices.get((platform, serial))
+    device: Union[AndroidDevice, IosDevice, HarmonyDevice] = cached_devices.get((platform, serial))
     data = device.take_screenshot()
     return ApiResponse.doSuccess(data)
 
 
 @app.get("/{platform}/{serial}/hierarchy", response_model=ApiResponse)
 async def dump_hierarchy(platform: str, serial: str):
-    device = cached_devices.get((platform, serial))
+    device: Union[AndroidDevice, IosDevice, HarmonyDevice] = cached_devices.get((platform, serial))
     data = device.dump_hierarchy()
     return ApiResponse.doSuccess(data)
 

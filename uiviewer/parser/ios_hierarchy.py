@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import uuid
+from typing import Dict
 
 
-def get_ios_hierarchy(client, scale, md=None):
-    if md:
-        client.appium_settings({"snapshotMaxDepth": md})
-    sourcejson = client.source(format='json')
+def convert_ios_hierarchy(data: Dict, scale: int) -> Dict:
 
     def __travel(node):
         node['_id'] = str(uuid.uuid4())
@@ -18,4 +16,4 @@ def get_ios_hierarchy(client, scale, md=None):
             __travel(child)
         return node
 
-    return __travel(sourcejson)
+    return __travel(data)

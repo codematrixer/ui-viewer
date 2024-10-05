@@ -37,6 +37,14 @@
               </el-option>
             </el-select>
 
+            <el-input
+              class="custom-input"
+              v-if="platform === 'ios'"
+              v-model="wdaUrl"
+              style="width: 250px; margin-right: 20px;"
+              placeholder="Please input WDA url">
+            </el-input>
+
             <el-button 
               :disabled="isConnecting"
               style="margin-right: 10px; width: 100px;"
@@ -89,7 +97,7 @@
             <div class="center" :style="{ width: centerWidth + 'px' }">
                 <p class="region-title">Selected Element Info</p>
                 <el-table
-                  :data="selectedNodeDetailsArray"
+                  :data="selectedNodeDetails"
                   style="width: 100%"
                   class="custom-table">
                   <el-table-column prop="key" label="Key" width="30%"></el-table-column>
@@ -116,18 +124,19 @@
                 <p class="region-title">UI hierarchy
                 </p>
                 <el-input
-                    class="no-border-input"
-                    placeholder="Search for..."
-                    v-model="nodeFilterText">
+                  class="custom-input"
+                  placeholder="Search for ..."
+                  style="margin-left: 10px;"
+                  v-model="nodeFilterText">
                 </el-input>
                 <el-tree
+                    class="custom-tree"
                     ref="treeRef"
                     :data="treeData"
                     :props="defaultProps"
                     @node-click="handleTreeNodeClick"
                     node-key="_id"
                     default-expand-all
-                    show-line
                     :expand-on-click-node="false"
                     :filter-node-method="filterNode">
                 </el-tree>
