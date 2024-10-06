@@ -46,8 +46,8 @@ def http_exception_handler(request: Request, exc: HTTPException):
     )
 
 
-def open_browser():
-    webbrowser.open_new("http://127.0.0.1:8000")
+def open_browser(port):
+    webbrowser.open_new(f"http://127.0.0.1:{port}")
 
 
 @app.get("/")
@@ -86,9 +86,13 @@ def dump_hierarchy(platform: str, serial: str):
     return ApiResponse.doSuccess(data)
 
 
-if __name__ == "__main__":
-    timer = threading.Timer(1.0, open_browser)
+def run(port=8000):
+    timer = threading.Timer(1.0, open_browser, args=[port])
     timer.daemon = True
     timer.start()
 
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=port)
+
+
+if __name__ == "__main__":
+    run()

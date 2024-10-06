@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import abc
-import traceback
 import tempfile
 from typing import List, Dict, Union, Tuple
 from functools import cached_property  # python3.8+
@@ -13,7 +12,6 @@ import adbutils
 import wda
 import uiautomator2 as u2
 from hmdriver2 import hdc
-from hmdriver2.driver import Driver
 from fastapi import HTTPException
 
 from uiviewer._utils import file_to_base64, image_to_base64
@@ -48,21 +46,21 @@ class DeviceMeta(metaclass=abc.ABCMeta):
 class HarmonyDevice(DeviceMeta):
     def __init__(self, serial: str):
         self.serial = serial
-        self.client = Driver(serial)
+        self.hdc = hdc.HdcWrapper(serial)
 
     @cached_property
     def _display_size(self) -> Tuple:
-        return self.client.display_size
+        return self.hdc.display_size()
 
     def take_screenshot(self) -> str:
         with tempfile.NamedTemporaryFile(delete=True, suffix=".png") as f:
             path = f.name
-            self.client.screenshot(path)
+            self.hdc.screenshot(path)
             return file_to_base64(path)
 
     def dump_hierarchy(self) -> BaseHierarchy:
-        packageName, pageName = self.client.current_app()
-        raw: Dict = self.client.dump_hierarchy()
+        packageName, pageName = self.hdc.current_app()
+        raw: Dict = self.hdc.dump_hierarchy()
         hierarchy: Dict = harmony_hierarchy.convert_harmony_hierarchy(raw)
         return BaseHierarchy(
             jsonHierarchy=hierarchy,
@@ -76,7 +74,6 @@ class HarmonyDevice(DeviceMeta):
 class AndroidDevice(DeviceMeta):
     def __init__(self, serial: str):
         self.serial = serial
-        adbutils.AdbClient()
         self.d: u2.Device = u2.connect(serial)
 
     @cached_property
@@ -115,6 +112,11 @@ class IosDevice(DeviceMeta):
     def _window_size(self) -> Tuple:
         return self.client.window_size()
 
+    def _check_wda_health(self) -> bool:
+        resp = request("GET", f"{self.wda_url}/status", timeout=5).json()
+        state = resp.get("value", {}).get("state")
+        return state == "success"
+
     def take_screenshot(self) -> str:
         img: Image.Image = self.client.screenshot()
         return image_to_base64(img)
@@ -136,13 +138,8 @@ class IosDevice(DeviceMeta):
             scale=self.scale
         )
 
-    def wda_health(self) -> bool:
-        resp = request("GET", f"{self.wda_url}/status", timeout=5).json()
-        state = resp.get("value", {}).get("state")
-        return state == "success"
 
-
-def get_device(platform: str, serial: str, wda_url: str, max_depth: int) -> Union[HarmonyDevice, AndroidDevice]:
+def get_device(platform: str, serial: str, wda_url: str, max_depth: int) -> Union[HarmonyDevice, AndroidDevice, IosDevice]:
     if platform == Platform.HARMONY:
         return HarmonyDevice(serial)
     elif platform == Platform.ANDROID:
@@ -165,9 +162,8 @@ def init_device(platform: str, serial: str, wda_url: str = None, max_depth: int 
         cached_devices[(platform, serial)] = device
 
         if isinstance(device, IosDevice):
-            return device.wda_health()
-    except Exception:
-        error = traceback.format_exc()
-        raise HTTPException(status_code=500, detail=error)
+            return device._check_wda_health()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
     return True
