@@ -12,11 +12,13 @@ new Vue({
       isConnected: false,
       isConnecting: false,
       isDumping: false,
-      wdaUrl: "",
+      wdaUrl: getFromLocalStorage('wdaUrl', 'http://localhost:8100'),
+      snapshotMaxDepth: getFromLocalStorage('snapshotMaxDepth', 30),
 
       packageName: getFromLocalStorage('packageName', ''),
       activityName: getFromLocalStorage('activityName', ''),
       displaySize: getFromLocalStorage('displaySize', [0, 0]),
+      scale: getFromLocalStorage('scale', 1),
       jsonHierarchy: {},
       mouseClickCoordinatesPercent: null,
       hoveredNode: null,
@@ -46,7 +48,7 @@ new Vue({
         .map(key => {
           let newKey = key;
           if (key === '_type') {
-            newKey = isHarmony ? 'type' : 'class';
+            newKey = isHarmony ? 'type' : 'className';
           }
           return {
             key: newKey,
@@ -63,6 +65,12 @@ new Vue({
     },
     serial(newVal) {
       saveToLocalStorage('serial', newVal);
+    },
+    wdaUrl(newVal) {
+      saveToLocalStorage('wdaUrl', newVal);
+    },
+    snapshotMaxDepth(newVal) {
+      saveToLocalStorage('snapshotMaxDepth', newVal);
     },
     nodeFilterText(val) {
       this.$refs.treeRef.filter(val);
@@ -95,10 +103,10 @@ new Vue({
           throw new Error('Please select device first');
         }
 
-        const response = await connectDevice(this.platform, this.serial, this.wdaUrl);
+        const response = await connectDevice(this.platform, this.serial, this.wdaUrl, this.snapshotMaxDepth);
         if (response.success) {
           this.isConnected = true;
-          await this.dumpHierarchyWithScreen();
+          await this.screenshotAndDumpHierarchy();
         } else {
           throw new Error(response.message);
         }
@@ -108,7 +116,7 @@ new Vue({
         this.isConnecting = false;
       }
     },
-    async dumpHierarchyWithScreen() {
+    async screenshotAndDumpHierarchy() {
       this.isDumping = true;
       try {
         await this.fetchScreenshot();
@@ -141,12 +149,14 @@ new Vue({
           this.packageName = ret.packageName;
           this.activityName = ret.activityName;
           this.displaySize = ret.windowSize;
+          this.scale = ret.scale;
           this.jsonHierarchy = ret.jsonHierarchy;
           this.treeData = [ret.jsonHierarchy];
 
           saveToLocalStorage('packageName', ret.packageName);
           saveToLocalStorage('activityName', ret.activityName);
           saveToLocalStorage('displaySize', ret.windowSize);
+          saveToLocalStorage('scale', ret.scale);
 
           this.hoveredNode = null;
           this.selectedNode = null;
@@ -258,6 +268,7 @@ new Vue({
     getDefaultNodeDetails(platform) {
       const commonDetails = [
         { key: 'displaySize', value: this.displaySize },
+        {key: 'scale', value: this.scale },
         { key: '点击坐标 %', value: this.mouseClickCoordinatesPercent }
       ];
     
