@@ -5,7 +5,10 @@ description = "UI hierarchy visualization tool, supporting Android, iOS, Harmony
 authors = ["codematrixer <chenli_gogo@163.com>"]
 license = "MIT"
 readme = "README.md"
-include = ["*/assets/*"]
+include = ["*/static/*"]
+
+[tool.poetry.scripts]
+uiviewer = "uiviewer.cli:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -15,7 +18,7 @@ aiofiles = "^23.1.0"
 uiautomator2 = "^3.0.0"
 facebook-wda = "^1.0.5"
 tidevice = "^0.12.10"
-hmdriver2 = "^1.2.9"
+hmdriver2 = "^1.2.10"
 
 [tool.poetry.extras]
 
