@@ -7,15 +7,37 @@ async function checkResponse(response) {
   return response.json();
 }
 
+export async function getVersion() {
+  const response = await fetch(`${API_HOST}version`);
+  return checkResponse(response);
+}
+
 export async function listDevices(platform) {
   const response = await fetch(`${API_HOST}${platform}/serials`);
   return checkResponse(response);
 }
 
 export async function connectDevice(platform, serial, wdaUrl, maxDepth) {
-  const response = await fetch(`${API_HOST}${platform}/${serial}/connect?wdaUrl=${wdaUrl}&maxDepth=${maxDepth}`, {
+  let url = `${API_HOST}${platform}/${serial}/connect`;
+
+  if (platform === 'ios') {
+    const queryParams = [];
+    if (wdaUrl) {
+      queryParams.push(`wdaUrl=${encodeURIComponent(wdaUrl)}`);
+    }
+    if (maxDepth) {
+      queryParams.push(`maxDepth=${encodeURIComponent(maxDepth)}`);
+    }
+
+    if (queryParams.length > 0) {
+      url += `?${queryParams.join('&')}`;
+    }
+  }
+
+  const response = await fetch(url, {
     method: 'POST'
   });
+
   return checkResponse(response);
 }
 

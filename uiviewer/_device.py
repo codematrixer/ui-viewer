@@ -2,7 +2,7 @@
 
 import abc
 import tempfile
-from typing import List, Dict, Union, Tuple
+from typing import List, Dict, Union, Tuple, Optional
 from functools import cached_property  # python3.8+
 
 from PIL import Image
@@ -101,8 +101,12 @@ class IosDevice(DeviceMeta):
     def __init__(self, udid: str, wda_url: str, max_depth: int) -> None:
         self.udid = udid
         self.wda_url = wda_url
-        self.max_depth = max_depth
+        self._max_depth = max_depth
         self.client = wda.Client(wda_url)
+
+    @property
+    def max_depth(self) -> int:
+        return int(self._max_depth) if self._max_depth else 30
 
     @cached_property
     def scale(self) -> int:
@@ -152,7 +156,7 @@ def get_device(platform: str, serial: str, wda_url: str, max_depth: int) -> Unio
 cached_devices = {}
 
 
-def init_device(platform: str, serial: str, wda_url: str = None, max_depth: int = 30) -> bool:
+def init_device(platform: str, serial: str, wda_url: str, max_depth: int):
 
     if serial not in list_serials(platform):
         raise HTTPException(status_code=500, detail=f"Device<{serial}> not found")

@@ -1,9 +1,15 @@
 # ui-viewer
+[![github actions](https://github.com/codematrixer/ui-viewer/actions/workflows/release.yml/badge.svg)](https://github.com/codematrixer/ui-viewer/actions)
+[![pypi version](https://img.shields.io/pypi/v/uiviewer.svg)](https://pypi.python.org/pypi/uiviewer)
+![python](https://img.shields.io/pypi/pyversions/uiviewer.svg)
+
 UI hierarchy visualization tool, supporting Android, iOS, HarmonyOS NEXT.
 
 ![showcase](./docs/imgs/show.gif)
 
 # Installation
+- python3.8+
+
 ```shell
 pip3 install -U uiviewer
 ```

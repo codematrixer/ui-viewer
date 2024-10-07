@@ -1,18 +1,19 @@
 import { saveToLocalStorage, getFromLocalStorage, copyToClipboard } from './utils.js';
-import { listDevices, connectDevice, fetchScreenshot, fetchHierarchy } from './api.js';
+import { getVersion, listDevices, connectDevice, fetchScreenshot, fetchHierarchy } from './api.js';
 
 
 new Vue({
   el: '#app',
   data() {
     return {
+      version: "",
       platform: getFromLocalStorage('platform', 'harmony'),
       serial: getFromLocalStorage('serial', ''),
       devices: [],
       isConnected: false,
       isConnecting: false,
       isDumping: false,
-      wdaUrl: getFromLocalStorage('wdaUrl', 'http://localhost:8100'),
+      wdaUrl: getFromLocalStorage('wdaUrl', ''),
       snapshotMaxDepth: getFromLocalStorage('snapshotMaxDepth', 30),
 
       packageName: getFromLocalStorage('packageName', ''),
@@ -76,6 +77,9 @@ new Vue({
       this.$refs.treeRef.filter(val);
     }
   },
+  created() {
+    this.fetchVersion();
+  },
   mounted() {
     this.loadCachedScreenshot();
     const canvas = this.$el.querySelector('#hierarchyCanvas');
@@ -88,12 +92,20 @@ new Vue({
         this.serial = ''
         this.isConnected = false;
     },
+    async fetchVersion() {
+      try {
+        const response = await getVersion();
+        this.version = response.data;
+      } catch (err) {
+        console.error(err);
+      }
+    },
     async listDevice() {
       try {
         const response = await listDevices(this.platform);
         this.devices = response.data;
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        this.$message({ showClose: true, message: `Error: ${err.message}`, type: 'error' });
       }
     },
     async connectDevice() {
@@ -101,6 +113,9 @@ new Vue({
       try {
         if (!this.serial) {
           throw new Error('Please select device first');
+        }
+        if (this.platform === 'ios' && !this.wdaUrl) {
+          throw new Error('Please input wdaUrl first');
         }
 
         const response = await connectDevice(this.platform, this.serial, this.wdaUrl, this.snapshotMaxDepth);
