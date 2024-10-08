@@ -17,7 +17,7 @@
         <div class="header">
             <div style="margin-right: 20px;">
                 <span style="font-weight: bold; font-size: 20px;">UI Viewer</span>
-                <span> 1.0.0</span>
+                <span>{{version}}</span>
             </div>
             <el-select
               v-model="platform"
@@ -42,7 +42,7 @@
               </el-option>
             </el-select>
 
-            <el-tooltip v-if="platform === 'ios'" content="Set WDA url, default value is http://localhost:8100" placement="top">
+            <el-tooltip v-if="platform === 'ios'" content="Set WDA url, such as http://localhost:8100" placement="top">
               <el-input
                 class="custom-input"
                 v-model="wdaUrl"
@@ -55,7 +55,7 @@
               <el-input
                 class="custom-input"
                 v-model="snapshotMaxDepth"
-                style="width: 100px; margin-right: 20px;"
+                style="width: 110px; margin-right: 20px;"
                 placeholder="maxDepth">
               </el-input>
             </el-tooltip>

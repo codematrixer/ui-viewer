@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "uiviewer"
-version = "1.0.0"
+version = "1.0.1"
 description = "UI hierarchy visualization tool, supporting Android, iOS, HarmonyOS NEXT."
 authors = ["codematrixer <chenli_gogo@163.com>"]
 license = "MIT"

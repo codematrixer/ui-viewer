@@ -1,7 +1,5 @@
 
-This project is developed using FastAPI, Vue, and Element-UI. It starts the service locally and displays the UI hierarchy tree through a web browser.
-
-**Tech Stack**
+# Tech Stack
 
 - python3
 - html/css/js
@@ -21,7 +19,7 @@ poetry install
 poetry build
 ```
 
-## Run
+# Run
 ```
 poetry run python3 -m uiviewer
 ```
