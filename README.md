@@ -3,7 +3,7 @@
 [![pypi version](https://img.shields.io/pypi/v/uiviewer.svg)](https://pypi.python.org/pypi/uiviewer)
 ![python](https://img.shields.io/pypi/pyversions/uiviewer.svg)
 
-UI hierarchy visualization tool, supporting Android, iOS, HarmonyOS NEXT.
+UI hierarchy inspector, supporting Android, iOS, HarmonyOS NEXT.
 
 This project is developed using FastAPI and Vue. It starts the service locally and displays UI hierarchy tree through web browser.
 
