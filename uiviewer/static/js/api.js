@@ -50,3 +50,18 @@ export async function fetchHierarchy(platform, serial) {
   const response = await fetch(`${API_HOST}${platform}/${serial}/hierarchy`);
   return checkResponse(response);
 }
+
+export async function fetchXpathLite(platform, treeData, nodeId) {
+  const response = await fetch(`${API_HOST}${platform}/hierarchy/xpathLite`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      tree_data: treeData,
+      node_id: nodeId
+    })
+  });
+
+  return checkResponse(response);
+}

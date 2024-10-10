@@ -1,5 +1,5 @@
 import { saveToLocalStorage, getFromLocalStorage, copyToClipboard } from './utils.js';
-import { getVersion, listDevices, connectDevice, fetchScreenshot, fetchHierarchy } from './api.js';
+import { getVersion, listDevices, connectDevice, fetchScreenshot, fetchHierarchy, fetchXpathLite } from './api.js';
 
 
 new Vue({
@@ -20,10 +20,13 @@ new Vue({
       activityName: getFromLocalStorage('activityName', ''),
       displaySize: getFromLocalStorage('displaySize', [0, 0]),
       scale: getFromLocalStorage('scale', 1),
+      screenshotTransform: {scale: 1, offsetX: 0, offsetY: 0},
       jsonHierarchy: {},
+      xpathLite: "//",
       mouseClickCoordinatesPercent: null,
       hoveredNode: null,
       selectedNode: null,
+
       treeData: [],
       defaultProps: {
         children: 'children',
@@ -39,24 +42,18 @@ new Vue({
     selectedNodeDetails() {
       const isHarmony = this.platform === 'harmony';
       const defaultDetails = this.getDefaultNodeDetails(this.platform);
-
+    
       if (!this.selectedNode) {
         return defaultDetails;
       }
-
-      const nodeDetails = Object.keys(this.selectedNode)
-        .filter(key => key !== 'children' && key !== '_id')
-        .map(key => {
-          let newKey = key;
-          if (key === '_type') {
-            newKey = isHarmony ? 'type' : 'className';
-          }
-          return {
-            key: newKey,
-            value: this.selectedNode[key]
-          };
-        });
-
+    
+      const nodeDetails = Object.entries(this.selectedNode)
+        .filter(([key]) => !['children', '_id', '_parentId', 'frame'].includes(key))
+        .map(([key, value]) => ({
+          key: key === '_type' ? (isHarmony ? 'type' : 'className') : key,
+          value
+        }));
+    
       return [...defaultDetails, ...nodeDetails];
     }
   },
@@ -223,6 +220,18 @@ new Vue({
         ctx.strokeRect(x * scale + offsetX, y * scale + offsetY, width * scale, height * scale);
       }
     },
+    async fetchXpathLite(nodeId) {
+      try {
+        const response = await fetchXpathLite(this.platform,this.jsonHierarchy, nodeId);
+        if (response.success) {
+          this.xpathLite = response.data;
+        } else {
+          throw new Error(response.message);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
     loadCachedScreenshot() {
       const cachedScreenshot = getFromLocalStorage('cachedScreenshot', null);
       if (cachedScreenshot) {
@@ -323,7 +332,7 @@ new Vue({
         this.renderHierarchy();
       }
     },
-    onMouseClick(event) {
+    async onMouseClick(event) {
       const canvas = this.$el.querySelector('#hierarchyCanvas');
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
@@ -340,6 +349,9 @@ new Vue({
       if (selectedNode !== this.selectedNode) {
         this.selectedNode = selectedNode ? selectedNode : null;
 
+        await this.fetchXpathLite(selectedNode._id)
+        this.selectedNode && (this.selectedNode.xpath = this.xpathLite);
+        
         this.renderHierarchy();
 
       } else {
@@ -353,8 +365,12 @@ new Vue({
         this.renderHierarchy();
       }
     },
-    handleTreeNodeClick(node) {
+    async handleTreeNodeClick(node) {
       this.selectedNode = node;
+
+      await this.fetchXpathLite(node._id)
+      this.selectedNode && (this.selectedNode.xpath = this.xpathLite);
+
       this.renderHierarchy();
     },
     filterNode(value, data) {

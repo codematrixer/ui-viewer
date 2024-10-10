@@ -32,3 +32,8 @@ class BaseHierarchy(BaseModel):
     scale: int = 1
     activityName: Optional[str] = None
     packageName: Optional[str] = None
+
+
+class XPathLiteRequest(BaseModel):
+    tree_data: Dict[str, Any]
+    node_id: str

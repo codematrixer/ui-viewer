@@ -1,0 +1,1838 @@
+{
+    "success": true,
+    "data": {
+        "jsonHierarchy": {
+            "_id": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf",
+            "_parentId": "",
+            "_type": "Application",
+            "label": " ",
+            "name": " ",
+            "id": null,
+            "value": null,
+            "isEnabled": "1",
+            "isVisible": "1",
+            "isAccessible": "0",
+            "frame": "{{0, 0}, {414, 896}}",
+            "children": [
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "children": [
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "0",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 896}}",
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 1792
+                                    },
+                                    "_id": "fca050ae-b802-4cb6-9f5b-40565dadd13c",
+                                    "_parentId": "7fba11d3-3831-4ebc-9c07-cfe9e14bd379"
+                                }
+                            ],
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "7fba11d3-3831-4ebc-9c07-cfe9e14bd379",
+                            "_parentId": "ef4ec3da-a5e8-40d1-bf72-23cba6d1bf3a"
+                        },
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "ac00f8c3-66a8-456a-a080-a216e56394f8",
+                            "_parentId": "ef4ec3da-a5e8-40d1-bf72-23cba6d1bf3a"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "ef4ec3da-a5e8-40d1-bf72-23cba6d1bf3a",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "1",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "1",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "children": [
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "0",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 896}}",
+                                    "children": [
+                                        {
+                                            "_type": "Other",
+                                            "label": null,
+                                            "name": null,
+                                            "id": null,
+                                            "value": null,
+                                            "isEnabled": "1",
+                                            "isVisible": "0",
+                                            "isAccessible": "0",
+                                            "frame": "{{0, 0}, {414, 100}}",
+                                            "rect": {
+                                                "y": 0,
+                                                "x": 0,
+                                                "width": 828,
+                                                "height": 200
+                                            },
+                                            "_id": "fab51ae9-733d-41b0-a6a9-8e554f2a2ec1",
+                                            "_parentId": "7ea029c3-9e22-4b87-adf6-dfd8ad0ffc36"
+                                        }
+                                    ],
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 1792
+                                    },
+                                    "_id": "7ea029c3-9e22-4b87-adf6-dfd8ad0ffc36",
+                                    "_parentId": "e3b0f89f-f8b2-4898-9ba4-c1dbe29132aa"
+                                },
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": "Home screen icons",
+                                    "id": "Home screen icons",
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "1",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 896}}",
+                                    "children": [
+                                        {
+                                            "_type": "Other",
+                                            "label": null,
+                                            "name": null,
+                                            "id": null,
+                                            "value": null,
+                                            "isEnabled": "1",
+                                            "isVisible": "1",
+                                            "isAccessible": "0",
+                                            "frame": "{{0, 0}, {414, 896}}",
+                                            "children": [
+                                                {
+                                                    "_type": "Other",
+                                                    "label": null,
+                                                    "name": null,
+                                                    "id": null,
+                                                    "value": null,
+                                                    "isEnabled": "1",
+                                                    "isVisible": "1",
+                                                    "isAccessible": "0",
+                                                    "frame": "{{0, 0}, {414, 896}}",
+                                                    "children": [
+                                                        {
+                                                            "_type": "Icon",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                            "children": [
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "FaceTime通话",
+                                                                    "name": "FaceTime通话",
+                                                                    "id": "FaceTime通话",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "53b6c1ef-703d-4e8c-98f7-b76ebabb2e96",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "日历",
+                                                                    "name": "日历",
+                                                                    "id": "日历",
+                                                                    "value": "10月10日 星期四",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "4706550b-9ed3-4c52-8e36-58aecc37c329",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "照片",
+                                                                    "name": "照片",
+                                                                    "id": "照片",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "2af2b492-09e7-4849-ad3b-b5238e368794",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "邮件",
+                                                                    "name": "邮件",
+                                                                    "id": "邮件",
+                                                                    "value": "无未读邮件",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "dc9f6fa4-08eb-417f-9c88-cc38a5ac3329",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "时钟",
+                                                                    "name": "时钟",
+                                                                    "id": "时钟",
+                                                                    "value": "11:22",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "3c52754e-a748-4f9f-96db-ca9a9d27d3ce",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "地图",
+                                                                    "name": "地图",
+                                                                    "id": "地图",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "fcc68812-3e30-472b-9384-ce6d67e7c28f",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "天气",
+                                                                    "name": "天气",
+                                                                    "id": "天气",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "ca875162-6fd8-4941-89a2-244d9d709a9f",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "提醒事项",
+                                                                    "name": "提醒事项",
+                                                                    "id": "提醒事项",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "c621a0a5-6171-4c7f-a618-c537ee406994",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "备忘录",
+                                                                    "name": "备忘录",
+                                                                    "id": "备忘录",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "373ee77e-327c-4539-b529-2f88ee3c9c48",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "股市",
+                                                                    "name": "股市",
+                                                                    "id": "股市",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "3539dc1d-a4fe-4824-bdee-9fdbb7262d3c",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "图书",
+                                                                    "name": "图书",
+                                                                    "id": "图书",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "49ac4fe2-2917-46e9-96dc-694736845406",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "App Store",
+                                                                    "name": "App Store",
+                                                                    "id": "App Store",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "fe3314c0-37af-4184-900c-f6b84081fe80",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "播客",
+                                                                    "name": "播客",
+                                                                    "id": "播客",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "80f5c2f9-9a5e-46cf-a54b-012503b15dba",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "视频",
+                                                                    "name": "视频",
+                                                                    "id": "视频",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "ba3b6b90-7fbd-4d8e-a04a-a55195ef5edf",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "健康",
+                                                                    "name": "健康",
+                                                                    "id": "健康",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "d048bfe4-1078-4054-b801-f6ffc1df344c",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "家庭",
+                                                                    "name": "家庭",
+                                                                    "id": "家庭",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "98d1d4c0-6d59-47e4-8c66-c8bedba83bc5",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "钱包",
+                                                                    "name": "钱包",
+                                                                    "id": "钱包",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "790bf94b-145b-43be-8ff3-85e818846134",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "设置",
+                                                                    "name": "设置",
+                                                                    "id": "设置",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 0}, {0, 0}}",
+                                                                    "rect": {
+                                                                        "y": 0,
+                                                                        "x": 0,
+                                                                        "width": 0,
+                                                                        "height": 0
+                                                                    },
+                                                                    "_id": "3d8389ae-7763-4fcc-bd66-3c59e0ef8281",
+                                                                    "_parentId": "1a8bfc31-dbd0-4c6f-9901-bf582b774103"
+                                                                }
+                                                            ],
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 0,
+                                                                "height": 0
+                                                            },
+                                                            "_id": "1a8bfc31-dbd0-4c6f-9901-bf582b774103",
+                                                            "_parentId": "97a16879-0451-436f-bd46-64a325f82eaf"
+                                                        },
+                                                        {
+                                                            "_type": "Icon",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "1",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                            "children": [
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "文件",
+                                                                    "name": "文件",
+                                                                    "id": "文件",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{30, 78}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 156,
+                                                                        "x": 60,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "8495ac58-24ba-44d6-9bfc-ae97e12f1cde",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "查找",
+                                                                    "name": "查找",
+                                                                    "id": "查找",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{125, 78}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 156,
+                                                                        "x": 250,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "51036db9-e6cd-4b87-ab3e-ee5b20f10d5e",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "快捷指令",
+                                                                    "name": "快捷指令",
+                                                                    "id": "快捷指令",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{221, 78}, {69, 92}}",
+                                                                    "rect": {
+                                                                        "y": 156,
+                                                                        "x": 442,
+                                                                        "width": 138,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "105d97e9-6be6-48bf-9b47-b27a629f5da6",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "iTunes Store",
+                                                                    "name": "iTunes Store",
+                                                                    "id": "iTunes Store",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{304, 78}, {93, 92}}",
+                                                                    "rect": {
+                                                                        "y": 156,
+                                                                        "x": 608,
+                                                                        "width": 186,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "196af4aa-9097-4fa0-8572-38505e458c05",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "翻译",
+                                                                    "name": "翻译",
+                                                                    "id": "翻译",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{30, 183}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 366,
+                                                                        "x": 60,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "0ce1ca67-dfeb-4ae3-896b-ffd2bb5e0798",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "“效率”文件夹",
+                                                                    "name": "效率",
+                                                                    "id": "效率",
+                                                                    "value": "2个App",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{125, 183}, {68, 92}}",
+                                                                    "children": [
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "通讯录",
+                                                                            "name": "通讯录",
+                                                                            "id": "通讯录",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "5b68aa7a-4932-4815-9224-8a53b90e9a33",
+                                                                            "_parentId": "ef38413e-342d-43b5-979a-38b72d9de421"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "提示",
+                                                                            "name": "提示",
+                                                                            "id": "提示",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "3b6abe09-fc8a-4faf-85e8-86aeaff87fc5",
+                                                                            "_parentId": "ef38413e-342d-43b5-979a-38b72d9de421"
+                                                                        }
+                                                                    ],
+                                                                    "rect": {
+                                                                        "y": 366,
+                                                                        "x": 250,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "ef38413e-342d-43b5-979a-38b72d9de421",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "Watch",
+                                                                    "name": "Watch",
+                                                                    "id": "Watch",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{221, 183}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 366,
+                                                                        "x": 442,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "8348a232-a609-44ab-9e86-e1838cc568da",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "“实用工具”文件夹",
+                                                                    "name": "实用工具",
+                                                                    "id": "实用工具",
+                                                                    "value": "4个App",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{316, 183}, {69, 92}}",
+                                                                    "children": [
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "计算器",
+                                                                            "name": "计算器",
+                                                                            "id": "计算器",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "eed81c5a-88ce-43e2-9878-86ed51a1d11c",
+                                                                            "_parentId": "ef9ce2e3-f7f2-4b10-bac7-ccdea62e7108"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "指南针",
+                                                                            "name": "指南针",
+                                                                            "id": "指南针",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "afeec5b5-a12e-4351-ad1c-40cd820206ac",
+                                                                            "_parentId": "ef9ce2e3-f7f2-4b10-bac7-ccdea62e7108"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "测距仪",
+                                                                            "name": "测距仪",
+                                                                            "id": "测距仪",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "8a0c886d-92c9-44ca-9f21-4ae7c7264b90",
+                                                                            "_parentId": "ef9ce2e3-f7f2-4b10-bac7-ccdea62e7108"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "语音备忘录",
+                                                                            "name": "语音备忘录",
+                                                                            "id": "语音备忘录",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "0",
+                                                                            "isAccessible": "0",
+                                                                            "frame": "{{0, 0}, {0, 0}}",
+                                                                            "rect": {
+                                                                                "y": 0,
+                                                                                "x": 0,
+                                                                                "width": 0,
+                                                                                "height": 0
+                                                                            },
+                                                                            "_id": "8937f882-71a4-42e1-b155-3ec4858b471c",
+                                                                            "_parentId": "ef9ce2e3-f7f2-4b10-bac7-ccdea62e7108"
+                                                                        }
+                                                                    ],
+                                                                    "rect": {
+                                                                        "y": 366,
+                                                                        "x": 632,
+                                                                        "width": 138,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "ef9ce2e3-f7f2-4b10-bac7-ccdea62e7108",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "Kim",
+                                                                    "name": "Kim",
+                                                                    "id": "Kim",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{30, 288}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 576,
+                                                                        "x": 60,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "b8a58848-2e5e-4606-8e09-66d2ce39f251",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "剪映",
+                                                                    "name": "剪映",
+                                                                    "id": "剪映",
+                                                                    "value": "1个新项目",
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{125, 277}, {79, 103}}",
+                                                                    "rect": {
+                                                                        "y": 554,
+                                                                        "x": 250,
+                                                                        "width": 158,
+                                                                        "height": 206
+                                                                    },
+                                                                    "_id": "24f63b39-1dcb-453b-879e-b4a9088b0952",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "相机",
+                                                                    "name": "相机",
+                                                                    "id": "相机",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{221, 288}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 576,
+                                                                        "x": 442,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "828212ff-fcbb-4e3d-9500-7e10ff180844",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "抖音",
+                                                                    "name": "抖音",
+                                                                    "id": "抖音",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{316, 288}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 576,
+                                                                        "x": 632,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "ebbfaa77-d47b-4f84-aff2-23859613596e",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "TikTok",
+                                                                    "name": "TikTok",
+                                                                    "id": "TikTok",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{30, 393}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 786,
+                                                                        "x": 60,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "d5b40baa-053e-4509-8334-a0a2bfc93389",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "Kit",
+                                                                    "name": "Kit",
+                                                                    "id": "Kit",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{125, 393}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 786,
+                                                                        "x": 250,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "54d2933e-b791-47f3-a0db-760f639f3cd9",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "NewSafari",
+                                                                    "name": "NewSafari",
+                                                                    "id": "NewSafari",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{215, 393}, {80, 92}}",
+                                                                    "rect": {
+                                                                        "y": 786,
+                                                                        "x": 430,
+                                                                        "width": 160,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "807c5006-30cc-41b6-85e6-81d8d15cdfc1",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "WebDriverAgentRunner-Runner",
+                                                                    "name": "WebDriverAgentRunner-Runner",
+                                                                    "id": "WebDriverAgentRunner-Runner",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{297, 393}, {106, 94}}",
+                                                                    "rect": {
+                                                                        "y": 786,
+                                                                        "x": 594,
+                                                                        "width": 212,
+                                                                        "height": 188
+                                                                    },
+                                                                    "_id": "04ec90b0-e6fb-484c-a94d-ac7c2c41fd31",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                },
+                                                                {
+                                                                    "_type": "Icon",
+                                                                    "label": "快手",
+                                                                    "name": "快手",
+                                                                    "id": "快手",
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "1",
+                                                                    "frame": "{{30, 498}, {68, 92}}",
+                                                                    "rect": {
+                                                                        "y": 996,
+                                                                        "x": 60,
+                                                                        "width": 136,
+                                                                        "height": 184
+                                                                    },
+                                                                    "_id": "339d84a4-83d1-4ba7-a99f-ea7d4128a77f",
+                                                                    "_parentId": "56390a1f-2827-42e1-a5d2-5decc2966040"
+                                                                }
+                                                            ],
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 0,
+                                                                "height": 0
+                                                            },
+                                                            "_id": "56390a1f-2827-42e1-a5d2-5decc2966040",
+                                                            "_parentId": "97a16879-0451-436f-bd46-64a325f82eaf"
+                                                        },
+                                                        {
+                                                            "_type": "PageIndicator",
+                                                            "label": null,
+                                                            "name": "Page control",
+                                                            "id": "Page control",
+                                                            "value": "第2页（共2页）",
+                                                            "isEnabled": "1",
+                                                            "isVisible": "1",
+                                                            "isAccessible": "1",
+                                                            "frame": "{{157, 708}, {101, 71}}",
+                                                            "rect": {
+                                                                "y": 1416,
+                                                                "x": 314,
+                                                                "width": 202,
+                                                                "height": 142
+                                                            },
+                                                            "_id": "a9782471-b9c3-4852-b824-b5f03b7bb72d",
+                                                            "_parentId": "97a16879-0451-436f-bd46-64a325f82eaf"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "1",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 780}, {414, 116}}",
+                                                            "children": [
+                                                                {
+                                                                    "_type": "Other",
+                                                                    "label": "程序坞",
+                                                                    "name": "程序坞",
+                                                                    "id": null,
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "1",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{0, 780}, {414, 104}}",
+                                                                    "children": [
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "电话",
+                                                                            "name": "电话",
+                                                                            "id": "电话",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "1",
+                                                                            "isAccessible": "1",
+                                                                            "frame": "{{30, 798}, {68, 68}}",
+                                                                            "rect": {
+                                                                                "y": 1596,
+                                                                                "x": 60,
+                                                                                "width": 136,
+                                                                                "height": 136
+                                                                            },
+                                                                            "_id": "734f5d55-c2c3-48bc-93fb-beb38d69d2f1",
+                                                                            "_parentId": "1b171e94-a8e6-4aa8-b402-c4dd1b2fc6fc"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "Safari浏览器",
+                                                                            "name": "Safari浏览器",
+                                                                            "id": "Safari浏览器",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "1",
+                                                                            "isAccessible": "1",
+                                                                            "frame": "{{125, 798}, {68, 68}}",
+                                                                            "rect": {
+                                                                                "y": 1596,
+                                                                                "x": 250,
+                                                                                "width": 136,
+                                                                                "height": 136
+                                                                            },
+                                                                            "_id": "fa0811a3-8ea4-457a-beb4-e2ba4073914d",
+                                                                            "_parentId": "1b171e94-a8e6-4aa8-b402-c4dd1b2fc6fc"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "信息",
+                                                                            "name": "信息",
+                                                                            "id": "信息",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "1",
+                                                                            "isAccessible": "1",
+                                                                            "frame": "{{221, 798}, {68, 68}}",
+                                                                            "rect": {
+                                                                                "y": 1596,
+                                                                                "x": 442,
+                                                                                "width": 136,
+                                                                                "height": 136
+                                                                            },
+                                                                            "_id": "36c953d5-f673-41d2-820b-413fccd183ad",
+                                                                            "_parentId": "1b171e94-a8e6-4aa8-b402-c4dd1b2fc6fc"
+                                                                        },
+                                                                        {
+                                                                            "_type": "Icon",
+                                                                            "label": "音乐",
+                                                                            "name": "音乐",
+                                                                            "id": "音乐",
+                                                                            "value": null,
+                                                                            "isEnabled": "1",
+                                                                            "isVisible": "1",
+                                                                            "isAccessible": "1",
+                                                                            "frame": "{{316, 798}, {68, 68}}",
+                                                                            "rect": {
+                                                                                "y": 1596,
+                                                                                "x": 632,
+                                                                                "width": 136,
+                                                                                "height": 136
+                                                                            },
+                                                                            "_id": "6b1dabf4-6e20-4bd1-930d-4a338205f1f7",
+                                                                            "_parentId": "1b171e94-a8e6-4aa8-b402-c4dd1b2fc6fc"
+                                                                        }
+                                                                    ],
+                                                                    "rect": {
+                                                                        "y": 1560,
+                                                                        "x": 0,
+                                                                        "width": 828,
+                                                                        "height": 208
+                                                                    },
+                                                                    "_id": "1b171e94-a8e6-4aa8-b402-c4dd1b2fc6fc",
+                                                                    "_parentId": "cdd945a8-5a64-487f-b421-38ca4bc7e159"
+                                                                },
+                                                                {
+                                                                    "_type": "Other",
+                                                                    "label": null,
+                                                                    "name": null,
+                                                                    "id": null,
+                                                                    "value": null,
+                                                                    "isEnabled": "1",
+                                                                    "isVisible": "0",
+                                                                    "isAccessible": "0",
+                                                                    "frame": "{{12, 780}, {390, 104}}",
+                                                                    "rect": {
+                                                                        "y": 1560,
+                                                                        "x": 24,
+                                                                        "width": 780,
+                                                                        "height": 208
+                                                                    },
+                                                                    "_id": "3f929c3c-1e1a-40c7-96ee-9e5a3a4f864a",
+                                                                    "_parentId": "cdd945a8-5a64-487f-b421-38ca4bc7e159"
+                                                                }
+                                                            ],
+                                                            "rect": {
+                                                                "y": 1560,
+                                                                "x": 0,
+                                                                "width": 828,
+                                                                "height": 232
+                                                            },
+                                                            "_id": "cdd945a8-5a64-487f-b421-38ca4bc7e159",
+                                                            "_parentId": "97a16879-0451-436f-bd46-64a325f82eaf"
+                                                        }
+                                                    ],
+                                                    "rect": {
+                                                        "y": 0,
+                                                        "x": 0,
+                                                        "width": 828,
+                                                        "height": 1792
+                                                    },
+                                                    "_id": "97a16879-0451-436f-bd46-64a325f82eaf",
+                                                    "_parentId": "a28587a8-d22a-49f2-9306-a8d0602bde83"
+                                                }
+                                            ],
+                                            "rect": {
+                                                "y": 0,
+                                                "x": 0,
+                                                "width": 828,
+                                                "height": 1792
+                                            },
+                                            "_id": "a28587a8-d22a-49f2-9306-a8d0602bde83",
+                                            "_parentId": "030b47f0-68da-4c18-942c-9f7ab6d30aa3"
+                                        }
+                                    ],
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 1792
+                                    },
+                                    "_id": "030b47f0-68da-4c18-942c-9f7ab6d30aa3",
+                                    "_parentId": "e3b0f89f-f8b2-4898-9ba4-c1dbe29132aa"
+                                },
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "1",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 896}}",
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 1792
+                                    },
+                                    "_id": "a1f68a92-f2de-4a3a-85de-b5e08cac679c",
+                                    "_parentId": "e3b0f89f-f8b2-4898-9ba4-c1dbe29132aa"
+                                }
+                            ],
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "e3b0f89f-f8b2-4898-9ba4-c1dbe29132aa",
+                            "_parentId": "43bc43b1-11f7-417a-803e-ece700ad8cf1"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "43bc43b1-11f7-417a-803e-ece700ad8cf1",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {828, 1792}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {828, 1792}}",
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 1656,
+                                "height": 3584
+                            },
+                            "_id": "3697a614-b11a-41e9-960f-d8c387e816e0",
+                            "_parentId": "ca9c2792-391b-4b84-9303-7c092bab1831"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 1656,
+                        "height": 3584
+                    },
+                    "_id": "ca9c2792-391b-4b84-9303-7c092bab1831",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {828, 1792}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {828, 1792}}",
+                            "children": [
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "0",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {828, 1792}}",
+                                    "children": [
+                                        {
+                                            "_type": "Other",
+                                            "label": null,
+                                            "name": null,
+                                            "id": null,
+                                            "value": null,
+                                            "isEnabled": "1",
+                                            "isVisible": "0",
+                                            "isAccessible": "0",
+                                            "frame": "{{0, 0}, {828, 1792}}",
+                                            "children": [
+                                                {
+                                                    "_type": "Other",
+                                                    "label": null,
+                                                    "name": null,
+                                                    "id": null,
+                                                    "value": null,
+                                                    "isEnabled": "1",
+                                                    "isVisible": "0",
+                                                    "isAccessible": "0",
+                                                    "frame": "{{0, 0}, {828, 1792}}",
+                                                    "children": [
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "4c4e0eb5-9733-4410-9f60-f3f2372becc7",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "da7a2bfd-117b-437f-8a70-ff28bd2c17fa",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "214bd93d-ac85-461d-9293-95758fabb096",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "2502fe5a-01ea-4ede-81fa-ee626e4511d4",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "6ea04646-f0f5-432e-8209-be4e969f2908",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        },
+                                                        {
+                                                            "_type": "Other",
+                                                            "label": null,
+                                                            "name": null,
+                                                            "id": null,
+                                                            "value": null,
+                                                            "isEnabled": "1",
+                                                            "isVisible": "0",
+                                                            "isAccessible": "0",
+                                                            "frame": "{{0, 0}, {828, 1792}}",
+                                                            "rect": {
+                                                                "y": 0,
+                                                                "x": 0,
+                                                                "width": 1656,
+                                                                "height": 3584
+                                                            },
+                                                            "_id": "fef2049d-b58d-4a12-9f2a-7c3de36712ce",
+                                                            "_parentId": "5735509b-9706-4fc3-9105-f9d69c91edce"
+                                                        }
+                                                    ],
+                                                    "rect": {
+                                                        "y": 0,
+                                                        "x": 0,
+                                                        "width": 1656,
+                                                        "height": 3584
+                                                    },
+                                                    "_id": "5735509b-9706-4fc3-9105-f9d69c91edce",
+                                                    "_parentId": "f710905a-24ae-4762-b5f8-d6b06dad91d1"
+                                                }
+                                            ],
+                                            "rect": {
+                                                "y": 0,
+                                                "x": 0,
+                                                "width": 1656,
+                                                "height": 3584
+                                            },
+                                            "_id": "f710905a-24ae-4762-b5f8-d6b06dad91d1",
+                                            "_parentId": "c1e572b5-e548-463a-9ac4-4cd72a359994"
+                                        }
+                                    ],
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 1656,
+                                        "height": 3584
+                                    },
+                                    "_id": "c1e572b5-e548-463a-9ac4-4cd72a359994",
+                                    "_parentId": "a4366101-0e2f-4ecd-9f6a-5ce3a1d7f9c1"
+                                }
+                            ],
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 1656,
+                                "height": 3584
+                            },
+                            "_id": "a4366101-0e2f-4ecd-9f6a-5ce3a1d7f9c1",
+                            "_parentId": "2847e31f-e52c-47d5-8549-2b310f7d6237"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 1656,
+                        "height": 3584
+                    },
+                    "_id": "2847e31f-e52c-47d5-8549-2b310f7d6237",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "children": [
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "0",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 896}}",
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 1792
+                                    },
+                                    "_id": "406ef746-a718-4635-8500-7e65ba0182be",
+                                    "_parentId": "e2d77017-26cf-4196-9457-1bd62820540e"
+                                },
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "0",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 896}, {414, 243}}",
+                                    "rect": {
+                                        "y": 1792,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 486
+                                    },
+                                    "_id": "2b7f3632-a926-4e51-b653-636ec4529099",
+                                    "_parentId": "e2d77017-26cf-4196-9457-1bd62820540e"
+                                }
+                            ],
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "e2d77017-26cf-4196-9457-1bd62820540e",
+                            "_parentId": "f1ad15c6-c3af-4979-8471-5a5d79e1c8f2"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "f1ad15c6-c3af-4979-8471-5a5d79e1c8f2",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "1",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "StatusBar",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "1",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 48}}",
+                            "children": [
+                                {
+                                    "_type": "Other",
+                                    "label": null,
+                                    "name": null,
+                                    "id": null,
+                                    "value": null,
+                                    "isEnabled": "1",
+                                    "isVisible": "1",
+                                    "isAccessible": "0",
+                                    "frame": "{{0, 0}, {414, 48}}",
+                                    "children": [
+                                        {
+                                            "_type": "Other",
+                                            "label": null,
+                                            "name": null,
+                                            "id": null,
+                                            "value": null,
+                                            "isEnabled": "1",
+                                            "isVisible": "1",
+                                            "isAccessible": "0",
+                                            "frame": "{{0, 0}, {414, 48}}",
+                                            "children": [
+                                                {
+                                                    "_type": "StaticText",
+                                                    "label": "11:22",
+                                                    "name": "11:22",
+                                                    "id": null,
+                                                    "value": "11:22",
+                                                    "isEnabled": "1",
+                                                    "isVisible": "1",
+                                                    "isAccessible": "1",
+                                                    "frame": "{{31, 15}, {41, 20}}",
+                                                    "rect": {
+                                                        "y": 30,
+                                                        "x": 62,
+                                                        "width": 82,
+                                                        "height": 40
+                                                    },
+                                                    "_id": "f74f4d2b-eeb2-4924-942b-58aa9f523c0a",
+                                                    "_parentId": "b2d35695-4e95-4f3f-8322-e45b7c8397fe"
+                                                },
+                                                {
+                                                    "_type": "Other",
+                                                    "label": "蜂窝网络",
+                                                    "name": "蜂窝网络",
+                                                    "id": null,
+                                                    "value": "无信号",
+                                                    "isEnabled": "1",
+                                                    "isVisible": "1",
+                                                    "isAccessible": "1",
+                                                    "frame": "{{326, 19}, {19, 12}}",
+                                                    "rect": {
+                                                        "y": 38,
+                                                        "x": 652,
+                                                        "width": 38,
+                                                        "height": 24
+                                                    },
+                                                    "_id": "f68e90fb-3f7e-4417-bb5b-968c5cc93f54",
+                                                    "_parentId": "b2d35695-4e95-4f3f-8322-e45b7c8397fe"
+                                                },
+                                                {
+                                                    "_type": "Other",
+                                                    "label": null,
+                                                    "name": "3（共3格无线局域网信号）",
+                                                    "id": "3（共3格无线局域网信号）",
+                                                    "value": "SSID, 3（共3格无线局域网信号）",
+                                                    "isEnabled": "1",
+                                                    "isVisible": "1",
+                                                    "isAccessible": "1",
+                                                    "frame": "{{349, 18}, {17, 13}}",
+                                                    "rect": {
+                                                        "y": 36,
+                                                        "x": 698,
+                                                        "width": 34,
+                                                        "height": 26
+                                                    },
+                                                    "_id": "c6135057-287c-4a8c-a1cc-955d58590b03",
+                                                    "_parentId": "b2d35695-4e95-4f3f-8322-e45b7c8397fe"
+                                                },
+                                                {
+                                                    "_type": "Other",
+                                                    "label": "电池电量：19%",
+                                                    "name": "电池电量：19%",
+                                                    "id": null,
+                                                    "value": "正在充电",
+                                                    "isEnabled": "1",
+                                                    "isVisible": "1",
+                                                    "isAccessible": "1",
+                                                    "frame": "{{370, 18}, {27, 13}}",
+                                                    "rect": {
+                                                        "y": 36,
+                                                        "x": 740,
+                                                        "width": 54,
+                                                        "height": 26
+                                                    },
+                                                    "_id": "a0822b29-7dff-4b87-8601-723d5cb16be1",
+                                                    "_parentId": "b2d35695-4e95-4f3f-8322-e45b7c8397fe"
+                                                }
+                                            ],
+                                            "rect": {
+                                                "y": 0,
+                                                "x": 0,
+                                                "width": 828,
+                                                "height": 96
+                                            },
+                                            "_id": "b2d35695-4e95-4f3f-8322-e45b7c8397fe",
+                                            "_parentId": "f607783a-d235-4ef4-8728-c4f2b9b34b08"
+                                        }
+                                    ],
+                                    "rect": {
+                                        "y": 0,
+                                        "x": 0,
+                                        "width": 828,
+                                        "height": 96
+                                    },
+                                    "_id": "f607783a-d235-4ef4-8728-c4f2b9b34b08",
+                                    "_parentId": "43540a65-8ae7-49ce-8e83-51cc7da6b077"
+                                }
+                            ],
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 96
+                            },
+                            "_id": "43540a65-8ae7-49ce-8e83-51cc7da6b077",
+                            "_parentId": "20f52f62-c3a9-4b69-a457-c5e58e7e2d51"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "20f52f62-c3a9-4b69-a457-c5e58e7e2d51",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "efc76405-1bf7-4367-998d-20a292718fa4",
+                            "_parentId": "1e676190-b28e-4d2c-8ea7-fcfc2565d2a5"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "1e676190-b28e-4d2c-8ea7-fcfc2565d2a5",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                },
+                {
+                    "_type": "Window",
+                    "label": null,
+                    "name": null,
+                    "id": null,
+                    "value": null,
+                    "isEnabled": "1",
+                    "isVisible": "0",
+                    "isAccessible": "0",
+                    "frame": "{{0, 0}, {414, 896}}",
+                    "children": [
+                        {
+                            "_type": "Other",
+                            "label": null,
+                            "name": null,
+                            "id": null,
+                            "value": null,
+                            "isEnabled": "1",
+                            "isVisible": "0",
+                            "isAccessible": "0",
+                            "frame": "{{0, 0}, {414, 896}}",
+                            "rect": {
+                                "y": 0,
+                                "x": 0,
+                                "width": 828,
+                                "height": 1792
+                            },
+                            "_id": "6ec515bf-65c8-48b9-abb9-7b610dc99e76",
+                            "_parentId": "ea1ef314-a2ab-4caa-a769-cde450c4fe3c"
+                        }
+                    ],
+                    "rect": {
+                        "y": 0,
+                        "x": 0,
+                        "width": 828,
+                        "height": 1792
+                    },
+                    "_id": "ea1ef314-a2ab-4caa-a769-cde450c4fe3c",
+                    "_parentId": "a1a912bb-0aba-44fa-9ffe-1441f6d6f2cf"
+                }
+            ],
+            "rect": {
+                "y": 0,
+                "x": 0,
+                "width": 828,
+                "height": 1792
+            }
+        },
+        "windowSize": [
+            414,
+            896
+        ],
+        "scale": 2,
+        "activityName": null,
+        "packageName": "com.apple.springboard"
+    },
+    "message": null
+}

@@ -63,29 +63,31 @@ def _parse_uiautomator_node(node):
     return attributes
 
 
-def get_android_hierarchy(page_xml: str) -> Dict:
+def convert_android_hierarchy(page_xml: str) -> Dict:
     dom = xml.dom.minidom.parseString(page_xml)
     root = dom.documentElement
 
-    def travel(node):
+    def __travel(node, parent_id=""):
         if node.attributes is None:
             return
         json_node = _parse_uiautomator_node(node)
         json_node['_id'] = str(uuid.uuid4())
+        json_node['_parentId'] = parent_id
+        json_node['xpath'] = ""
         json_node.pop("package", None)
         if node.childNodes:
             children = []
             for n in node.childNodes:
-                child = travel(n)
+                child = __travel(n, json_node['_id'])
                 if child:
                     children.append(child)
             json_node['children'] = children
 
         # Sort the keys
-        keys_order = ['_type', 'resourceId', 'text', 'description']
+        keys_order = ['xpath', '_type', 'resourceId', 'text', 'description']
         sorted_node = {k: json_node[k] for k in keys_order if k in json_node}
         sorted_node.update({k: json_node[k] for k in json_node if k not in keys_order})
 
         return sorted_node
 
-    return travel(root)
+    return __travel(root)

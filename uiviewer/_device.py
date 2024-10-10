@@ -14,7 +14,7 @@ import uiautomator2 as u2
 from hmdriver2 import hdc
 from fastapi import HTTPException
 
-from uiviewer._utils import file_to_base64, image_to_base64
+from uiviewer._utils import file2base64, image2base64
 from uiviewer._models import Platform, BaseHierarchy
 from uiviewer.parser import android_hierarchy, ios_hierarchy, harmony_hierarchy
 
@@ -56,7 +56,7 @@ class HarmonyDevice(DeviceMeta):
         with tempfile.NamedTemporaryFile(delete=True, suffix=".png") as f:
             path = f.name
             self.hdc.screenshot(path)
-            return file_to_base64(path)
+            return file2base64(path)
 
     def dump_hierarchy(self) -> BaseHierarchy:
         packageName, pageName = self.hdc.current_app()
@@ -82,12 +82,12 @@ class AndroidDevice(DeviceMeta):
 
     def take_screenshot(self) -> str:
         img: Image.Image = self.d.screenshot()
-        return image_to_base64(img)
+        return image2base64(img)
 
     def dump_hierarchy(self) -> BaseHierarchy:
         current = self.d.app_current()
         page_xml = self.d.dump_hierarchy()
-        page_json = android_hierarchy.get_android_hierarchy(page_xml)
+        page_json = android_hierarchy.convert_android_hierarchy(page_xml)
         return BaseHierarchy(
             jsonHierarchy=page_json,
             activityName=current['activity'],
@@ -123,7 +123,7 @@ class IosDevice(DeviceMeta):
 
     def take_screenshot(self) -> str:
         img: Image.Image = self.client.screenshot()
-        return image_to_base64(img)
+        return image2base64(img)
 
     def _current_bundle_id(self) -> str:
         resp = request("GET", f"{self.wda_url}/wda/activeAppInfo", timeout=10).json()

@@ -5,9 +5,9 @@ from typing import Dict
 
 
 def convert_harmony_hierarchy(data: Dict) -> Dict:
-    ret = {"_id": str(uuid.uuid4()), "children": []}
+    ret = {"_id": str(uuid.uuid4()), "children": [], "_parentId": ""}
 
-    def __recursive_convert(node_a):
+    def __travel(node_a, parent_id=""):
         node_b = {
             "index": 0,
             "text": "",
@@ -30,9 +30,12 @@ def convert_harmony_hierarchy(data: Dict) -> Dict:
                 "height": 0
             },
             "_id": str(uuid.uuid4()),
+            "_parentId": parent_id,
+            "xpath": ""
         }
 
         attributes = node_a.get("attributes", {})
+        node_b["xpath"] = attributes.get("xpath", "")
         node_b["_type"] = attributes.get("type", "")
         node_b["id"] = attributes.get("id", "")
         node_b["description"] = attributes.get("description", "")
@@ -40,7 +43,7 @@ def convert_harmony_hierarchy(data: Dict) -> Dict:
         node_b["checkable"] = attributes.get("checkable", "").lower() == "true"
         node_b["clickable"] = attributes.get("clickable", "").lower() == "true"
         node_b["enabled"] = attributes.get("enabled", "").lower() == "true"
-        node_b["focusable"] = attributes.get("focused", "").lower() == "true"
+        node_b["focusable"] = attributes.get("focusable", "").lower() == "true"
         node_b["focused"] = attributes.get("focused", "").lower() == "true"
         node_b["scrollable"] = attributes.get("scrollable", "").lower() == "true"
         node_b["longClickable"] = attributes.get("longClickable", "").lower() == "true"
@@ -53,11 +56,11 @@ def convert_harmony_hierarchy(data: Dict) -> Dict:
 
         children = node_a.get("children", [])
         if children:
-            node_b["children"] = [__recursive_convert(child) for child in children]
+            node_b["children"] = [__travel(child, node_b["_id"]) for child in children]
 
         return node_b
 
     # Recursively convert children of a to match b's structure
-    ret["children"] = [__recursive_convert(child) for child in data.get("children", [])]
+    ret["children"] = [__travel(child, ret["_id"]) for child in data.get("children", [])]
 
     return ret

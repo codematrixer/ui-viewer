@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from typing import Union, Optional
+from typing import Union, Dict, Any
 
 from fastapi import APIRouter, Query
 from fastapi.responses import RedirectResponse
@@ -13,8 +13,9 @@ from uiviewer._device import (
     IosDevice,
     HarmonyDevice
 )
-from uiviewer._models import ApiResponse
 from uiviewer._version import __version__
+from uiviewer._models import ApiResponse, XPathLiteRequest
+from uiviewer.parser.xpath_lite import XPathLiteGenerator
 
 
 router = APIRouter()
@@ -64,3 +65,12 @@ def dump_hierarchy(platform: str, serial: str):
     device: Union[AndroidDevice, IosDevice, HarmonyDevice] = cached_devices.get((platform, serial))
     data = device.dump_hierarchy()
     return ApiResponse.doSuccess(data)
+
+
+@router.post("/{platform}/hierarchy/xpathLite", response_model=ApiResponse)
+async def fetch_xpathLite(platform: str, request: XPathLiteRequest):
+    tree_data = request.tree_data
+    node_id = request.node_id
+    generator = XPathLiteGenerator(platform, tree_data)
+    xpath = generator.get_xpathLite(node_id)
+    return ApiResponse.doSuccess(xpath)
