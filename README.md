@@ -3,9 +3,18 @@
 [![pypi version](https://img.shields.io/pypi/v/uiviewer.svg)](https://pypi.python.org/pypi/uiviewer)
 ![python](https://img.shields.io/pypi/pyversions/uiviewer.svg)
 
-UI hierarchy inspector, supporting Android, iOS, HarmonyOS NEXT.
+UI hierarchy inspector, supporting `Android`, `iOS`, and `HarmonyOS NEXT`. 
 
-This project is developed using FastAPI and Vue. It starts the service locally and displays UI hierarchy tree through web browser.
+Its features include:
+
+- visualize the UI hierarchy via screenshot and tree structure.
+- view element properties
+- auto generate XPath or XPathLite
+- auto generate coordinate percentages.
+- and more…
+
+
+This project is developed using FastAPI and Vue. It starts locally and displays UI hierarchy through web browser.
 
 ![show](https://i.ibb.co/Phfm9Q1/show.gif)
 
