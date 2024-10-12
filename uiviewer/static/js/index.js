@@ -83,6 +83,10 @@ new Vue({
     canvas.addEventListener('mousemove', this.onMouseMove);
     canvas.addEventListener('click', this.onMouseClick);
     canvas.addEventListener('mouseleave', this.onMouseLeave);
+
+    // 设置Canvas的尺寸和分辨率
+    this.setupCanvasResolution('#screenshotCanvas');
+    this.setupCanvasResolution('#hierarchyCanvas');
   },
   methods: {
     initPlatform() {
@@ -240,31 +244,40 @@ new Vue({
         this.renderScreenshot(cachedScreenshot);
       }
     },
+  
+    // 解决在高分辨率屏幕上，Canvas绘制的内容可能会显得模糊。这是因为Canvas的默认分辨率与屏幕的物理像素密度不匹配
+    setupCanvasResolution(selector) {
+      const canvas = this.$el.querySelector(selector);
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+    },
     renderScreenshot(base64Data) {
-      const img = new Image();
-      img.src = `data:image/png;base64,${base64Data}`;
-      img.onload = () => {
-        const canvas = this.$el.querySelector('#screenshotCanvas');
-        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = `data:image/png;base64,${base64Data}`;
+        img.onload = () => {
+            const canvas = this.$el.querySelector('#screenshotCanvas');
+            const ctx = canvas.getContext('2d');
 
-        const { clientWidth: canvasWidth, clientHeight: canvasHeight } = canvas;
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
+            const { clientWidth: canvasWidth, clientHeight: canvasHeight } = canvas;
 
-        const { width: imgWidth, height: imgHeight } = img;
-        const scale = Math.min(canvasWidth / imgWidth, canvasHeight / imgHeight);
-        const x = (canvasWidth - imgWidth * scale) / 2;
-        const y = (canvasHeight - imgHeight * scale) / 2;
+            this.setupCanvasResolution('#screenshotCanvas');
 
-        this.screenshotTransform = { scale, offsetX: x, offsetY: y };
+            const { width: imgWidth, height: imgHeight } = img;
+            const scale = Math.min(canvasWidth / imgWidth, canvasHeight / imgHeight);
+            const x = (canvasWidth - imgWidth * scale) / 2;
+            const y = (canvasHeight - imgHeight * scale) / 2;
 
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        ctx.drawImage(img, x, y, imgWidth * scale, imgHeight * scale);
+            this.screenshotTransform = { scale, offsetX: x, offsetY: y };
 
-        const hierarchyCanvas = this.$el.querySelector('#hierarchyCanvas');
-        hierarchyCanvas.width = canvasWidth;
-        hierarchyCanvas.height = canvasHeight;
-      };
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            ctx.drawImage(img, x, y, imgWidth * scale, imgHeight * scale);
+
+            this.setupCanvasResolution('#hierarchyCanvas');
+        };
     },
     findSmallestNode(node, mouseX, mouseY, scale, offsetX, offsetY) {
       let smallestNode = null;
