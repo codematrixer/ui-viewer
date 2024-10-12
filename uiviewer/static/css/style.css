@@ -43,6 +43,7 @@ body, html {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 }
 .header {
     height: 65px;
@@ -55,6 +56,7 @@ body, html {
 }
 .main {
     display: flex;
+    width: 100%;
     height: calc(100% - 65px);
 }
 
@@ -66,10 +68,9 @@ body, html {
     width: 25%;
     background-color: #212933;
     border-right: #333844 1px solid;
-    overflow: auto;
     justify-content: center;
     align-items: center;
-    position: relative; /* 确保子元素的绝对定位基于 .left */
+    position: relative;
 }
 #screenshotCanvas, #hierarchyCanvas {
     position: absolute;
@@ -84,7 +85,9 @@ body, html {
 }
 
 .right {
-    flex: 1;
+    /* flex: 1; */
+    width: 45%;
+    padding-right: 12px;
     background-color: #212933;
 }
 
@@ -114,6 +117,7 @@ body, html {
 
 .custom-tree {
     overflow: auto;
+    white-space: nowrap;
 }
 
 .custom-table .el-table__row {

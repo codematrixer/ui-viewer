@@ -28,9 +28,9 @@ new Vue({
       selectedNode: null,
 
       treeData: [],
-      defaultProps: {
+      defaultTreeProps: {
         children: 'children',
-        label: '_type'
+        label: this.getTreeLabel
       },
       nodeFilterText: '',
       centerWidth: 500,
@@ -87,7 +87,9 @@ new Vue({
   methods: {
     initPlatform() {
         this.serial = ''
-        this.isConnected = false;
+        this.isConnected = false
+        this.selectedNode = null
+        this.treeData = []
     },
     async fetchVersion() {
       try {
@@ -375,8 +377,27 @@ new Vue({
     },
     filterNode(value, data) {
       if (!value) return true;
-      if (!data || !data._type) return false;
-      return data._type.indexOf(value) !== -1;
+      if (!data) return false;
+      const { _type, resourceId, lable, text, id } = data;
+      const filterMap = {
+        android: [_type, resourceId, text],
+        ios: [_type, lable],
+        harmony: [_type, text, id]
+      };
+      const fieldsToFilter = filterMap[this.platform];
+      const isFieldMatch = fieldsToFilter.some(field => field && field.indexOf(value) !== -1);
+      const label = this.getTreeLabel(data);
+      const isLabelMatch = label && label.indexOf(value) !== -1;
+      return isFieldMatch || isLabelMatch;
+    },
+    getTreeLabel(node) {
+      const { _type="", resourceId, lable, text, id } = node;
+      const labelMap = {
+        android: resourceId || text,
+        ios: lable,
+        harmony: text || id
+      };
+      return `${_type} - ${labelMap[this.platform] || ''}`;
     },
     copyToClipboard(value) {
       const success = copyToClipboard(value);
