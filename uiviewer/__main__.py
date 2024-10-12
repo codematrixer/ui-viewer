@@ -36,7 +36,7 @@ def global_exception_handler(request: Request, exc: Exception):
 def http_exception_handler(request: Request, exc: HTTPException):
     return JSONResponse(
         status_code=exc.status_code,
-        content=ApiResponse(success=False, message=exc.detail).dict(),
+        content=ApiResponse(success=False, message=exc.detail).dict()
     )
 
 

@@ -8,7 +8,7 @@ new Vue({
     return {
       version: "",
       platform: getFromLocalStorage('platform', 'harmony'),
-      serial: getFromLocalStorage('serial', ''),
+      serial: "",
       devices: [],
       isConnected: false,
       isConnecting: false,
@@ -60,9 +60,6 @@ new Vue({
   watch: {
     platform(newVal) {
       saveToLocalStorage('platform', newVal);
-    },
-    serial(newVal) {
-      saveToLocalStorage('serial', newVal);
     },
     wdaUrl(newVal) {
       saveToLocalStorage('wdaUrl', newVal);
@@ -404,10 +401,10 @@ new Vue({
       return isFieldMatch || isLabelMatch;
     },
     getTreeLabel(node) {
-      const { _type="", resourceId, lable, text, id } = node;
+      const { _type="", resourceId="", label="", text="", id="" } = node;
       const labelMap = {
         android: resourceId || text,
-        ios: lable,
+        ios: label,
         harmony: text || id
       };
       return `${_type} - ${labelMap[this.platform] || ''}`;

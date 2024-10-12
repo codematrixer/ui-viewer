@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import abc
+import traceback
 import tempfile
 from typing import List, Dict, Union, Tuple, Optional
 from functools import cached_property  # python3.8+
@@ -14,6 +15,7 @@ import uiautomator2 as u2
 from hmdriver2 import hdc
 from fastapi import HTTPException
 
+from uiviewer._logger import logger
 from uiviewer._utils import file2base64, image2base64
 from uiviewer._models import Platform, BaseHierarchy
 from uiviewer.parser import android_hierarchy, ios_hierarchy, harmony_hierarchy
@@ -159,6 +161,7 @@ cached_devices = {}
 def init_device(platform: str, serial: str, wda_url: str, max_depth: int):
 
     if serial not in list_serials(platform):
+        logger.error(f"Device<{serial}> not found")
         raise HTTPException(status_code=500, detail=f"Device<{serial}> not found")
 
     try:
@@ -168,6 +171,7 @@ def init_device(platform: str, serial: str, wda_url: str, max_depth: int):
         if isinstance(device, IosDevice):
             return device._check_wda_health()
     except Exception as e:
+        logger.error(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
 
     return True
