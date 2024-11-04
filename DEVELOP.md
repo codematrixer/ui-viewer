@@ -15,6 +15,7 @@ pip3 install poetry
 git clone git@github.com:codematrixer/ui-viewer.git
 cd ui-viewer
 
+poetry lock --no-update
 poetry install
 poetry build
 ```

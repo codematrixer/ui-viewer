@@ -3,7 +3,7 @@
 [![pypi version](https://img.shields.io/pypi/v/uiviewer.svg)](https://pypi.python.org/pypi/uiviewer)
 ![python](https://img.shields.io/pypi/pyversions/uiviewer.svg)
 
-UI hierarchy inspector, supporting `Android`, `iOS`, and `HarmonyOS NEXT`. 
+UI hierarchy inspector for Mobile App, supporting `Android`, `iOS`, and `HarmonyOS NEXT`. 
 
 Its features include:
 
@@ -60,6 +60,7 @@ python3 -m uiviewer -p <PORT>
 
 # Tips
 - If you are using a virtual environment, please make sure to activate it before running the command.
+
 - On iOS, please ensure that WDA is successfully started and wda port forwarding is successful in advance.
   -   First, Use `xcode` or  `tidevice` or `go-ios` to launch wda.
   ```
