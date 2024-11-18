@@ -3,6 +3,7 @@
 import abc
 import traceback
 import tempfile
+import os
 from typing import List, Dict, Union, Tuple, Optional
 from functools import cached_property  # python3.8+
 
@@ -55,10 +56,14 @@ class HarmonyDevice(DeviceMeta):
         return self.hdc.display_size()
 
     def take_screenshot(self) -> str:
+        png_base64 = None
         with tempfile.NamedTemporaryFile(delete=True, suffix=".png") as f:
             path = f.name
+            f.close()
             self.hdc.screenshot(path)
-            return file2base64(path)
+            png_base64 = file2base64(path)
+            os.remove(path)
+        return png_base64
 
     def dump_hierarchy(self) -> BaseHierarchy:
         packageName, pageName = self.hdc.current_app()
