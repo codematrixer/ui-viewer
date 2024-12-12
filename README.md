@@ -56,6 +56,29 @@ python3 -m uiviewer -p <PORT>
 
 ```
 
+# Environment
+If you need to connect to a remote HDC Server or ADB server for remote device debugging, you must set the required environment variables before starting uiviewer.
+
+HarmonyOS
+```bash
+export HDC_SERVER_HOST=127.0.0.1  # Replace with the remote host
+export HDC_SERVER_PORT=8710
+```
+
+Android
+```
+export ANDROID_ADB_SERVER_HOST=127.0.0.1  # Replace with the remote host
+export ANDROID_ADB_SERVER_PORT=5037
+```
+
+Remove Environment Variables, To unset the environment variables:
+```
+unset HDC_SERVER_HOST
+unset HDC_SERVER_PORT
+
+unset ANDROID_ADB_SERVER_HOST
+unset ANDROID_ADB_SERVER_PORT
+```
 
 
 # Tips
