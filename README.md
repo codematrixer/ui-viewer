@@ -66,13 +66,13 @@ export HDC_SERVER_PORT=8710
 ```
 
 Android
-```
+```bash
 export ANDROID_ADB_SERVER_HOST=127.0.0.1  # Replace with the remote host
 export ANDROID_ADB_SERVER_PORT=5037
 ```
 
-Remove Environment Variables, To unset the environment variables:
-```
+If you want to remove Environment Variables, To unset the environment variables:
+```bash
 unset HDC_SERVER_HOST
 unset HDC_SERVER_PORT
 
