@@ -9,13 +9,13 @@ from functools import cached_property  # python3.8+
 
 from PIL import Image
 from requests import request
-import tidevice
 import adbutils
 import wda
 import uiautomator2 as u2
 from hmdriver2 import hdc
 from fastapi import HTTPException
 
+from uiviewer.go_ios_cli import GoIOS
 from uiviewer._logger import logger
 from uiviewer._utils import file2base64, image2base64
 from uiviewer._models import Platform, BaseHierarchy
@@ -28,8 +28,9 @@ def list_serials(platform: str) -> List[str]:
         raws = adbutils.AdbClient().device_list()
         devices = [item.serial for item in raws]
     elif platform == Platform.IOS:
-        raw = tidevice.Usbmux().device_list()
-        devices = [d.udid for d in raw]
+        raw = GoIOS.list_devices()
+
+        devices = raw.get("deviceList", [])
     else:
         devices = hdc.list_devices()
 
