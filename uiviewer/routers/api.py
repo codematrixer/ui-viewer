@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from typing import Union, Dict, Any
+from typing import Union, Dict, Any, Optional
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from fastapi.responses import RedirectResponse
+from pydantic import BaseModel
 
 from uiviewer._device import (
     list_serials,
@@ -16,9 +17,17 @@ from uiviewer._device import (
 from uiviewer._version import __version__
 from uiviewer._models import ApiResponse, XPathLiteRequest
 from uiviewer.parser.xpath_lite import XPathLiteGenerator
+from uiviewer.go_ios_cli import GoIOS, GoIOSError
 
 
 router = APIRouter()
+
+
+class RunWdaRequest(BaseModel):
+    bundle_id: str
+    test_runner_bundle_id: str
+    xctestconfig: str = "WebDriverAgentRunner.xctest"
+    udid: Optional[str] = None
 
 
 @router.get("/")
@@ -74,3 +83,19 @@ async def fetch_xpathLite(platform: str, request: XPathLiteRequest):
     generator = XPathLiteGenerator(platform, tree_data)
     xpath = generator.get_xpathLite(node_id)
     return ApiResponse.doSuccess(xpath)
+
+
+@router.post("/ios/run_wda", response_model=ApiResponse)
+async def run_wda(request: RunWdaRequest):
+    try:
+        GoIOS.run_wda(
+            bundle_id=request.bundle_id,
+            test_runner_bundle_id=request.test_runner_bundle_id,
+            xctestconfig=request.xctestconfig,
+            udid=request.udid
+        )
+        return ApiResponse.doSuccess("WDA start command issued successfully.")
+    except GoIOSError as e:
+        return ApiResponse.doError(f"Failed to start WDA: {e.message}. Details: {e.stderr}")
+    except Exception as e:
+        return ApiResponse.doError(f"An unexpected error occurred: {str(e)}")

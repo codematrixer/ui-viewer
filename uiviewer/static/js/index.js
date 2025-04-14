@@ -1,5 +1,13 @@
 import { saveToLocalStorage, getFromLocalStorage, copyToClipboard } from './utils.js';
-import { getVersion, listDevices, connectDevice, fetchScreenshot, fetchHierarchy, fetchXpathLite } from './api.js';
+import { 
+  getVersion, 
+  listDevices, 
+  connectDevice, 
+  fetchScreenshot, 
+  fetchHierarchy, 
+  fetchXpathLite, 
+  startWdaProcess 
+} from './api.js';
 
 
 new Vue({
@@ -35,7 +43,16 @@ new Vue({
       nodeFilterText: '',
       centerWidth: 500,
       isDividerHovered: false,
-      isDragging: false
+      isDragging: false,
+
+      wdaDialogVisible: false,
+      wdaStarting: false,
+      wdaForm: {
+        bundle_id: getFromLocalStorage('wda_bundle_id', ''),
+        test_runner_bundle_id: getFromLocalStorage('wda_test_runner_bundle_id', ''),
+        xctestconfig: getFromLocalStorage('wda_xctestconfig', 'WebDriverAgentRunner.xctest'),
+        udid: '' 
+      }
     };
   },
   computed: {
@@ -69,6 +86,14 @@ new Vue({
     },
     nodeFilterText(val) {
       this.$refs.treeRef.filter(val);
+    },
+    wdaForm: {
+      deep: true,
+      handler(newVal) {
+        saveToLocalStorage('wda_bundle_id', newVal.bundle_id);
+        saveToLocalStorage('wda_test_runner_bundle_id', newVal.test_runner_bundle_id);
+        saveToLocalStorage('wda_xctestconfig', newVal.xctestconfig);
+      }
     }
   },
   created() {
@@ -81,7 +106,6 @@ new Vue({
     canvas.addEventListener('click', this.onMouseClick);
     canvas.addEventListener('mouseleave', this.onMouseLeave);
 
-    // 设置Canvas的尺寸和分辨率
     this.setupCanvasResolution('#screenshotCanvas');
     this.setupCanvasResolution('#hierarchyCanvas');
   },
@@ -242,7 +266,6 @@ new Vue({
       }
     },
   
-    // 解决在高分辨率屏幕上，Canvas绘制的内容可能会显得模糊。这是因为Canvas的默认分辨率与屏幕的物理像素密度不匹配
     setupCanvasResolution(selector) {
       const canvas = this.$el.querySelector(selector);
       const dpr = window.devicePixelRatio || 1;
@@ -367,7 +390,6 @@ new Vue({
         this.renderHierarchy();
 
       } else {
-        // 保证每次点击重新计算`selectedNodeDetails`，更新点击坐标
         this.selectedNode = { ...this.selectedNode };
       }
     },
@@ -430,7 +452,66 @@ new Vue({
       this.isDividerHovered = true;
     },
     leaveDivider() {
-      this.isDividerHovered = false;
+      if (!this.isDragging) {
+        this.isDividerHovered = false;
+      }
+    },
+    showWdaDialog() {
+      this.wdaForm.udid = this.serial || ''; 
+      this.wdaDialogVisible = true;
+      this.$nextTick(() => {
+        if (this.$refs.wdaFormRef) {
+          this.$refs.wdaFormRef.clearValidate();
+        }
+      });
+    },
+
+    async startWda() {
+      if (this.platform !== 'ios') {
+        this.$message.error('WDA can only be started for iOS platform.');
+        return;
+      }
+
+      this.$refs.wdaFormRef.validate(async (valid) => {
+        if (valid) {
+          this.wdaStarting = true;
+          try {
+            const udidToUse = this.wdaForm.udid || this.serial;
+            if (!udidToUse && !this.wdaForm.udid) { 
+               console.warn("No UDID selected or entered for WDA."); 
+            }
+            
+            const payload = {
+              bundle_id: this.wdaForm.bundle_id,
+              test_runner_bundle_id: this.wdaForm.test_runner_bundle_id,
+              xctestconfig: this.wdaForm.xctestconfig || 'WebDriverAgentRunner.xctest', 
+              udid: udidToUse || null 
+            };
+
+            const response = await startWdaProcess(payload);
+            if (response.success) {
+              this.$message.success('WDA start command issued successfully.');
+              this.wdaDialogVisible = false;
+              this.wdaUrl= "http://localhost:8100";
+            } else {
+              throw new Error(response.message || 'Failed to issue WDA start command.');
+            }
+          } catch (err) {
+            console.error('Error starting WDA:', err);
+            this.$message({ 
+                showClose: true, 
+                message: `启动 WDA 失败: ${err.message}`,
+                type: 'error',
+                duration: 5000 
+            });
+          } finally {
+            this.wdaStarting = false;
+          }
+        } else {
+          console.log('WDA form validation failed');
+          return false;
+        }
+      });
     }
  }
 });

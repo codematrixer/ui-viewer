@@ -62,6 +62,11 @@
               </el-input>
             </el-tooltip>
 
+            <el-button 
+              v-if="platform === 'ios'" 
+              @click="showWdaDialog" 
+              :loading="wdaStarting" 
+              style="margin-left: 10px;">启动 WDA</el-button>
 
             <el-button 
               :disabled="isConnecting"
@@ -155,6 +160,32 @@
                 </el-tree>
             </div>
         </div>
+
+        <!-- Add WDA Start Dialog -->
+        <el-dialog 
+          title="启动 WebDriverAgent" 
+          :visible.sync="wdaDialogVisible" 
+          width="500px">
+          <el-form :model="wdaForm" label-width="180px" ref="wdaFormRef">
+            <el-form-item label="WDA Bundle ID" prop="bundle_id" required>
+              <el-input v-model="wdaForm.bundle_id" placeholder="e.g., com.facebook.WebDriverAgentRunner.xctrunner"></el-input>
+            </el-form-item>
+            <el-form-item label="Test Runner Bundle ID" prop="test_runner_bundle_id" required>
+              <el-input v-model="wdaForm.test_runner_bundle_id" placeholder="e.g., com.facebook.WebDriverAgentLib"></el-input>
+            </el-form-item>
+            <el-form-item label="XCTest Configuration" prop="xctestconfig">
+              <el-input v-model="wdaForm.xctestconfig" placeholder="WebDriverAgentRunner.xctest"></el-input>
+            </el-form-item>
+            <el-form-item label="Device UDID (Optional)" prop="udid">
+              <el-input v-model="wdaForm.udid" placeholder="Leave blank to use selected device (if any)"></el-input>
+            </el-form-item>
+          </el-form>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="wdaDialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="startWda" :loading="wdaStarting">启 动</el-button>
+          </span>
+        </el-dialog>
+
     </div>
     
     <script src="/static/cdn/code.jquery.com/jquery-3.6.0.min.js"></script>
