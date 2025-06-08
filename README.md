@@ -16,7 +16,7 @@ Its features include:
 
 This project is developed using FastAPI and Vue. It starts locally and displays UI hierarchy through web browser.
 
-![show](https://ibb.co/HzkFxdG)
+![show](https://github.com/user-attachments/assets/cd277443-2064-4c98-a5c9-214ee6fae674)
 
 # Installation
 - python3.8+
@@ -111,16 +111,6 @@ unset ANDROID_ADB_SERVER_PORT
   - Finally, Input the **`wdaUrl`** in the web page, such as `http://localhost:8100`
 
 - On iOS，WDA can easily freeze when dumping high UI hierarchy. You can reduce the **`maxDepth`** on the web page. The default is 30.
-
-# Preview
-- HarmonyOS
-  ![harmony](https://i.ibb.co/82BrJ1H/harmony.png)
-
-- Android
-![android](https://i.ibb.co/RySs497/android.png)
-
-- iOS
-![ios](https://i.ibb.co/VVWtTS3/ios.png)
 
 
 # Relevant
