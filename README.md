@@ -16,7 +16,7 @@ Its features include:
 
 This project is developed using FastAPI and Vue. It starts locally and displays UI hierarchy through web browser.
 
-![show](https://i.ibb.co/Phfm9Q1/show.gif)
+![show](https://ibb.co/HzkFxdG)
 
 # Installation
 - python3.8+
