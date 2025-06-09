@@ -65,3 +65,15 @@ export async function fetchXpathLite(platform, treeData, nodeId) {
 
   return checkResponse(response);
 }
+
+// Added function to call the backend endpoint for starting WDA
+export async function startWdaProcess(payload) {
+  const response = await fetch(`${API_HOST}ios/run_wda`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload) // Send bundle_id, test_runner_bundle_id, xctestconfig, udid
+  });
+  return checkResponse(response);
+}
